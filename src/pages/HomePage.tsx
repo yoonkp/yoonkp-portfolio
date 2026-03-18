@@ -8,10 +8,10 @@ export function HomePage() {
   return (
     <main className="page">
       <Hero />
+      <NowBuilding />
       <ProofBar />
       <FeaturedCases />
       <ExperienceSection />
-      <NowBuilding />
     </main>
   );
 }

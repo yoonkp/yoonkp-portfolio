@@ -3,7 +3,7 @@ import type { HeroSignal } from "../types/portfolio";
 export const siteMeta = {
   brand: "YK",
   name: "박윤경",
-  title: "Front-End UI Systems Developer",
+  title: "UI Systems PL · Front-End",
   resumeUrl: "https://buly.kr/2qXkkys",
   githubUrl: "https://github.com/yoonkp",
   email: "yoonkp0233@gmail.com",
@@ -12,18 +12,18 @@ export const siteMeta = {
 
 export const heroSignals: HeroSignal[] = [
   {
-    eyebrow: "NOW / ADDPORTER",
-    title: "Monorepo + MUI System",
-    lines: ["Admin / Web / Mobile-App 구조 설계", "네이밍 컨벤션 문서화", "Cross-functional 허브 역할"],
+    eyebrow: "NOW / 애드포터",
+    title: "Monorepo + MUI",
+    lines: ["Admin · Web · App 구조 설계", "네이밍 규칙 문서화", "Cross-functional 허브 역할"],
   },
   {
     eyebrow: "ENTERPRISE OPS",
     title: "Samsung E&A MAP",
-    lines: ["복합 UI 라이브러리 표준화", "대용량 데이터 테이블 패턴화", "재사용률 70%+ 기반 확보"],
+    lines: ["재사용률 70%+ 기반 확보", "대용량 테이블 패턴화", "혼합 라이브러리 표준화"],
   },
   {
     eyebrow: "LAUNCH + GROWTH",
     title: "Edulime + LUSH",
-    lines: ["무디자인 상태의 LMS 구조 설계", "App Store 공식 출시 경험", "운영형 이벤트 퍼블리싱 월 8건+"],
+    lines: ["무디자인 LMS 구조 설계", "App Store 출시 경험", "운영형 이벤트 월 8건+"],
   },
 ];

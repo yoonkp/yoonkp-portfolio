@@ -16,6 +16,11 @@ import { Footer } from "./components/layout/Footer";
 import { HomePage } from "./pages/HomePage";
 import { CaseStudyPage } from "./pages/CaseStudyPage";
 
+const defaultTransition = {
+  duration: 0.5,
+  ease: [0.22, 1, 0.36, 1] as const,
+};
+
 function ScrollManager() {
   const location = useLocation();
 
@@ -76,7 +81,7 @@ function NotFoundPage() {
       <p className="section-eyebrow">PAGE NOT FOUND</p>
       <h1>요청한 페이지를 찾을 수 없습니다.</h1>
       <p className="page-copy">
-        케이스 스터디 링크가 바뀌었거나 잘못된 주소로 접근했습니다. 홈으로 돌아가 대표 케이스를 다시 확인해 주세요.
+        케이스 스터디 링크가 바뀌었거나 잘못된 주소로 접근했습니다. 홈으로 돌아가 주요 사례를 다시 확인해 주세요.
       </p>
       <div className="button-row">
         <Link className="primary-button" to="/">
@@ -104,7 +109,7 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <MotionConfig reducedMotion="user" transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
+    <MotionConfig reducedMotion="user" transition={defaultTransition}>
       <RouterProvider router={router} />
     </MotionConfig>
   );

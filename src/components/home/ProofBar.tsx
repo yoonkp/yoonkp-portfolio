@@ -1,51 +1,75 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { proofMetrics } from "../../content/proofMetrics";
-import { fadeUp, hoverLift, sectionStagger } from "../../lib/motion";
+import { fadeUp, kpiHover, sectionStagger, tapScale, proofCountPulse } from "../../lib/motion";
 import type { ProofMetric } from "../../types/portfolio";
+
+const easeOutCubic = (value: number) => 1 - Math.pow(1 - value, 3);
 
 function MetricValue({ metric }: { metric: ProofMetric }) {
   const ref = useRef<HTMLSpanElement | null>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
+  const shouldReduceMotion = useReducedMotion();
   const [count, setCount] = useState(0);
+  const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
     const target = metric.countTo;
 
     if (!target || !inView) {
+      setCount(0);
+      setIsFinished(false);
+      return;
+    }
+
+    if (shouldReduceMotion) {
+      setCount(target);
+      setIsFinished(false);
       return;
     }
 
     let frame = 0;
     const start = performance.now();
-    const duration = 900;
+    const duration = 1200;
 
     const animate = (time: number) => {
       const progress = Math.min((time - start) / duration, 1);
-      setCount(Math.round(target * progress));
+      const eased = easeOutCubic(progress);
+      setCount(Math.round(target * eased));
 
       if (progress < 1) {
         frame = requestAnimationFrame(animate);
+      } else {
+        setCount(target);
+        setIsFinished(true);
       }
     };
 
+    setIsFinished(false);
     frame = requestAnimationFrame(animate);
 
     return () => cancelAnimationFrame(frame);
-  }, [inView, metric.countTo]);
+  }, [inView, metric.countTo, shouldReduceMotion]);
 
   if (!metric.countTo) {
     return (
-      <strong ref={ref} className="proof-rail__value">
+      <motion.strong ref={ref} className="proof-rail__value" initial="rest" variants={proofCountPulse} animate="rest">
         {metric.value}
-      </strong>
+      </motion.strong>
     );
   }
 
   return (
-    <strong ref={ref} className="proof-rail__value">
+    <motion.strong
+      ref={ref}
+      className="proof-rail__value"
+      initial="rest"
+      animate={isFinished ? "done" : "rest"}
+      variants={proofCountPulse}
+    >
       {`${metric.prefix ?? ""}${count}${metric.suffix ?? ""}`}
-    </strong>
+    </motion.strong>
   );
 }
 
@@ -54,10 +78,28 @@ export function ProofBar() {
     <section className="section section--dense">
       <motion.div className="proof-rail" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} variants={sectionStagger}>
         {proofMetrics.map((metric) => (
-          <motion.article className="proof-rail__item" key={metric.label} variants={fadeUp} whileHover={hoverLift}>
-            <p>{metric.label}</p>
-            <MetricValue metric={metric} />
-            <span>{metric.support}</span>
+          <motion.article className="proof-rail__item" key={metric.label} variants={fadeUp} whileHover={kpiHover} whileTap={tapScale}>
+            {metric.href ? (
+              metric.href.startsWith("#") ? (
+                <Link className="proof-rail__link" to={{ pathname: "/", hash: metric.href }}>
+                  <p>{metric.label}</p>
+                  <MetricValue metric={metric} />
+                  <span>{metric.support}</span>
+                </Link>
+              ) : (
+                <Link className="proof-rail__link" to={metric.href}>
+                  <p>{metric.label}</p>
+                  <MetricValue metric={metric} />
+                  <span>{metric.support}</span>
+                </Link>
+              )
+            ) : (
+              <>
+                <p>{metric.label}</p>
+                <MetricValue metric={metric} />
+                <span>{metric.support}</span>
+              </>
+            )}
           </motion.article>
         ))}
       </motion.div>

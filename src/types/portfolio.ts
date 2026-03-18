@@ -2,6 +2,7 @@ export interface ProofMetric {
   value: string;
   label: string;
   support: string;
+  href?: string;
   countTo?: number;
   prefix?: string;
   suffix?: string;
@@ -67,9 +68,12 @@ export interface NowBuilding {
 }
 
 export interface ExperienceItem {
+  theme: "current" | "enterprise" | "consumer" | "foundation";
   stage: string;
   company: string;
   role: string;
+  focus: string;
+  decision: string;
   summary: string;
   highlights: string[];
   tags: string[];

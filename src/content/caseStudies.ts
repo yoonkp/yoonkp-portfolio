@@ -4,12 +4,12 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "samsung-ea-map",
     theme: "samsung",
-    heroLabel: "CASE 01 / ENTERPRISE ADMIN UI",
+    heroLabel: "CASE 01 · ADMIN 표준화",
     heroMetric: "재사용률 70%+",
     shortTitle: "Samsung E&A MAP",
     title: "Samsung E&A MAP UI 표준화",
-    summary: "혼합 UI 환경의 Admin과 테이블을 표준화했습니다.",
-    teaser: "혼합 UI를 공통 규칙으로 정리했습니다.",
+    summary: "혼합 Admin을 공통 규칙으로 묶어 재사용률 70%+ 기반을 만든 프로젝트입니다.",
+    teaser: "혼합 UI를 규칙과 패턴으로 통일했습니다.",
     previewImage: "/assets/images/project3.png",
     galleryImages: ["/assets/images/project3.png", "/assets/images/project33.png", "/assets/images/project22.png"],
     domain: "Enterprise Admin UI",
@@ -73,12 +73,12 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "edulime-lms",
     theme: "edulime",
-    heroLabel: "CASE 02 / GLOBAL LMS",
-    heroMetric: "App Store 2025.01.21",
+    heroLabel: "CASE 02 · WEB·APP 출시",
+    heroMetric: "2025.01 App 출시",
     shortTitle: "Edulime LMS",
     title: "Edulime LMS 구조 설계",
-    summary: "디자인 없이 도메인 모델로 Web·App 구조를 설계했습니다.",
-    teaser: "디자인 없이 Web·App 구조를 세웠습니다.",
+    summary: "디자인 없이 Web·App 구조를 세우고 출시까지 연결한 프로젝트입니다.",
+    teaser: "무디자인 상태에서 Web·App 구조를 설계했습니다.",
     previewImage: "/assets/images/edulime-pc-1.png",
     galleryImages: [
       "/assets/images/edulime-pc-2.png",
@@ -147,12 +147,12 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "lush-fresh-sale",
     theme: "lush",
-    heroLabel: "CASE 03 / CONSUMER COMMERCE",
-    heroMetric: "App Store #1",
+    heroLabel: "CASE 03 · 커머스 운영",
+    heroMetric: "앱 1위 3일",
     shortTitle: "LUSH Fresh Sale",
     title: "LUSH Fresh Sale 운영형 커머스 UI",
-    summary: "이벤트와 데모를 전환 흐름으로 묶었습니다.",
-    teaser: "운영형 이벤트를 템플릿으로 관리했습니다.",
+    summary: "반복 이벤트를 템플릿화해 속도와 전환을 함께 만든 프로젝트입니다.",
+    teaser: "반복 이벤트를 템플릿으로 운영했습니다.",
     previewImage: "/assets/images/digital-demo2.png",
     galleryImages: ["/assets/images/digital-demo.png", "/assets/images/project4.png", "/assets/images/project44.jpg"],
     domain: "Consumer Commerce + Campaign Operations",
@@ -163,7 +163,7 @@ export const caseStudies: CaseStudy[] = [
     outcomes: ["이벤트 월 8건+ 운영", "iPad 데모 구축", "App Store 1위 3일"],
     context: "짧은 일정 안에 브랜드 톤과 전환 흐름을 함께 맞춰야 했습니다.",
     constraints: ["짧은 일정", "브랜드 톤 유지", "디바이스 적응형", "운영 속도 요구", "성과성 페이지 설계"],
-    ownership: ["이벤트 페이지 반복 퍼블리싱", "iPad 디지털 데모 인터랙션", "Fresh Sale 마크업과 프런트 기능 개발", "운영형 템플릿 정리"],
+    ownership: ["이벤트 페이지 반복 퍼블리싱", "iPad 디지털 데모 인터랙션", "Fresh Sale 마크업과 프론트 기능 개발", "운영형 템플릿 정리"],
     decisions: [
       {
         title: "이벤트 페이지를 개별 산출물이 아니라 템플릿 시스템으로 봄",
@@ -222,27 +222,23 @@ export const legacyCaseIdMap: Record<string, string> = {
 };
 
 export const nowBuilding: NowBuilding = {
-  eyebrow: "NOW BUILDING / CURRENT ROLE",
-  title: "Addporter 모노레포와 UI 시스템 설계 중",
-  summary: "Admin·Web·App을 묶고, MUI 규칙을 세우고 있습니다.",
-  publicNote: "비공개 화면 대신 구조, 규칙, 협업 방식만 공개합니다.",
-  highlight: "프런트엔드 기반이 없는 조직에서 공통 구조를 세우고 있습니다.",
+  eyebrow: "NOW / CURRENT",
+  title: "애드포터 구조와 UI 시스템 설계",
+  summary: "프론트엔드 기반이 없는 조직에서 공통 구조를 세우고 있습니다.",
+  publicNote: "비공개 화면 대신 구조와 운영 방식만 공개합니다.",
+  highlight: "현재 애드포터에서 Admin·Web·App 기준을 세우는 중입니다.",
   liveUrl: "https://adpotter-web.vercel.app/main",
   pillars: [
     {
       title: "Platform Foundation",
-      items: ["Admin·Web·App 구조 설계", "서비스 공통 구조 설계", "화면 뼈대와 폴더 기준 정리"],
+      items: ["Admin·Web·App 구조 설계", "화면 뼈대와 폴더 기준 정리", "서비스 공통 구조 설계"],
     },
     {
-      title: "System Operations",
+      title: "System Rules",
       items: ["MUI 컴포넌트 시스템 설계", "네이밍 규칙 문서화", "반복 패턴과 예외 기준 정리"],
     },
     {
-      title: "UI Implementation",
-      items: ["운영 화면 규칙 구현", "반복 가능한 패턴 정리", "예외 처리를 코드와 문서에 동시 반영"],
-    },
-    {
-      title: "Team Enablement",
+      title: "Cross-functional Enablement",
       items: ["협업 허브와 실행 정렬", "기획·디자인·백엔드 사이 조율", "AI 워크플로 전파와 품질 기준 정렬"],
     },
   ],

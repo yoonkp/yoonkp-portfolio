@@ -3,8 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { siteMeta } from "../../content/siteMeta";
 
 const sectionLinks = [
-  { label: "Case Studies", hash: "#cases" },
   { label: "Now", hash: "#now" },
+  { label: "Case Studies", hash: "#cases" },
   { label: "Experience", hash: "#experience" },
   { label: "Contact", hash: "#contact" },
 ];
@@ -27,25 +27,14 @@ export function Header() {
           </span>
         </Link>
 
-        <button
-          className="menu-toggle"
-          type="button"
-          aria-label="메뉴 열기"
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((prev) => !prev)}
-        >
+        <button className="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded={menuOpen} onClick={() => setMenuOpen((prev) => !prev)}>
           {menuOpen ? "닫기" : "메뉴"}
         </button>
 
         <div className={`site-header__panel${menuOpen ? " is-open" : ""}`}>
           <nav className="site-nav" aria-label="Primary">
             {sectionLinks.map((item) => (
-              <Link
-                key={item.hash}
-                className={`site-nav__link${location.hash === item.hash ? " is-active" : ""}`}
-                to={homeLink(item.hash)}
-                onClick={closeMenu}
-              >
+              <Link key={item.hash} className={`site-nav__link${location.hash === item.hash ? " is-active" : ""}`} to={homeLink(item.hash)} onClick={closeMenu}>
                 {item.label}
               </Link>
             ))}
@@ -56,7 +45,7 @@ export function Header() {
               GitHub
             </a>
             <a className="nav-button nav-button--primary" href={siteMeta.resumeUrl} target="_blank" rel="noreferrer">
-              이력서
+              Resume
             </a>
           </div>
         </div>
