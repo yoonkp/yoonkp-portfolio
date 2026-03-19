@@ -48,11 +48,7 @@ const stagePanels = [
   },
 ];
 
-const proofTrail = [
-  "2026.03 MVP Demo 완료",
-  "Samsung 재사용률 70%+",
-  "LUSH 앱 1위 3일",
-];
+const proofTrail = ["2026.03 MVP Demo 완료", "Samsung 재사용률 70%+", "LUSH 앱 1위 3일"];
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -72,12 +68,7 @@ export function Hero() {
     <section id="home" className="section hero hero--scene">
       <AnimatePresence>
         {showIntro ? (
-          <motion.div
-            className="hero-intro"
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.46, ease: [0.22, 1, 0.36, 1] } }}
-          >
+          <motion.div className="hero-intro" initial={{ opacity: 1 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.46, ease: [0.22, 1, 0.36, 1] } }}>
             <motion.div className="hero-intro__beam" initial={{ scaleX: 0.4, opacity: 0 }} animate={{ scaleX: 1, opacity: 1 }} transition={{ duration: 0.8 }}>
               <span>YK</span>
               <strong>UI STAGE / SYSTEM INTRO</strong>
@@ -92,9 +83,7 @@ export function Hero() {
             {siteMeta.name} · UI SYSTEMS · PL-MINDED FRONT-END
           </motion.p>
           <motion.h1 variants={fadeUp}>
-            흩어진 운영 화면을
-            <br />
-            팀이 반복해서 쓰는
+            운영 UI를
             <br />
             시스템으로 바꿉니다.
           </motion.h1>
@@ -135,14 +124,7 @@ export function Hero() {
         </motion.div>
 
         <motion.div className="hero-scene__visual" variants={fadeRight}>
-          <motion.a
-            className="hero-scene__demo"
-            href={nowBuilding.liveUrl}
-            target="_blank"
-            rel="noreferrer"
-            whileHover={hoverLiftSoft}
-            whileTap={ctaTap}
-          >
+          <motion.a className="hero-scene__demo" href={nowBuilding.liveUrl} target="_blank" rel="noreferrer" whileHover={hoverLiftSoft} whileTap={ctaTap}>
             <div className="hero-scene__board">
               <div className="hero-scene__grid" />
               <div className="hero-scene__glow hero-scene__glow--left" />
