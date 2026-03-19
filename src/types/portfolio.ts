@@ -44,6 +44,10 @@ export interface CaseStudy {
   stack: string[];
   outcomes: string[];
   context: string;
+  roleLead: string;
+  constraintsLead: string;
+  evidenceLead: string;
+  resultLead: string;
   constraints: string[];
   ownership: string[];
   decisions: DecisionItem[];

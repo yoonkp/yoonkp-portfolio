@@ -3,7 +3,7 @@ import type { HeroSignal } from "../types/portfolio";
 export const siteMeta = {
   brand: "YK",
   name: "박윤경",
-  title: "UI Systems PL · Front-End",
+  title: "UI Systems PL · 프론트엔드",
   resumeUrl: "https://buly.kr/2qXkkys",
   githubUrl: "https://github.com/yoonkp",
   email: "yoonkp0233@gmail.com",

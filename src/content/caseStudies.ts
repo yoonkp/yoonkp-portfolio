@@ -19,6 +19,10 @@ export const caseStudies: CaseStudy[] = [
     stack: ["React 18", "TypeScript", "MUI", "AG-Grid", "Shadcn UI", "Tailwind CSS", "SCSS"],
     outcomes: ["재사용률 70%+ 확보", "대용량 테이블 표준화", "협업 가이드 정착"],
     context: "혼합 라이브러리와 대용량 데이터로 화면 편차가 큰 환경이었습니다.",
+    roleLead: "화면을 하나씩 맞추기보다, 운영 화면 전체가 같은 규칙으로 움직이게 만드는 역할을 맡았습니다.",
+    constraintsLead: "복잡성은 화면 수보다 예외 규칙과 혼합 스택에서 나왔습니다.",
+    evidenceLead: "대표 화면 1개와 운영 규칙 4개로 구조화 과정을 압축해 보여줍니다.",
+    resultLead: "이 케이스의 핵심은 보기 좋은 화면보다 반복 가능한 기준을 남겼다는 점입니다.",
     constraints: ["다층 메뉴 트리", "대용량 데이터", "다수 벤더 협업", "스타일 충돌 위험", "화면별 예외가 많은 운영 도메인"],
     ownership: ["퍼블리싱 구조 설계", "컴포넌트 기준 정리", "스타일 충돌 해소 규칙 수립", "테이블 패턴 정의", "신입 퍼블리셔 멘토링"],
     decisions: [
@@ -93,6 +97,10 @@ export const caseStudies: CaseStudy[] = [
     stack: ["React 18", "TypeScript", "Kendo UI", "Sass", "Vite"],
     outcomes: ["도메인 기반 화면 설계", "Web·App 동시 구축", "App Store 출시"],
     context: "디자인 없이 관리자와 학생 흐름을 동시에 설계해야 했습니다.",
+    roleLead: "디자인보다 도메인 모델이 앞선 상황에서, 화면 구조와 CRUD 패턴의 기준선을 먼저 잡았습니다.",
+    constraintsLead: "문제는 화면 미감보다 정의되지 않은 구조와 용어를 빠르게 고정하는 일이었습니다.",
+    evidenceLead: "관리자 Web과 학생 App 흐름이 어떻게 나뉘는지 핵심 증거만 남겼습니다.",
+    resultLead: "이 케이스의 설득 포인트는 무디자인 상태에서도 출시 가능한 구조를 만들었다는 점입니다.",
     constraints: ["무디자인 상태", "영어 커뮤니케이션", "짧은 납기", "Web과 App 동시 진행", "도메인 복잡성"],
     ownership: ["도메인 모델 기반 화면 분해", "CRUD 패턴 설계", "관리자 대시보드 구조화", "학생용 모바일 흐름 단순화", "일부 기획 협업"],
     decisions: [
@@ -162,6 +170,10 @@ export const caseStudies: CaseStudy[] = [
     stack: ["React 18", "Next.js 13", "Tailwind CSS", "SCSS"],
     outcomes: ["이벤트 월 8건+ 운영", "iPad 데모 구축", "App Store 1위 3일"],
     context: "짧은 일정 안에 브랜드 톤과 전환 흐름을 함께 맞춰야 했습니다.",
+    roleLead: "운영 속도를 유지하면서도 브랜드 경험과 인터랙션의 밀도를 잃지 않는 역할을 맡았습니다.",
+    constraintsLead: "이 케이스의 난도는 구현 자체보다 반복 제작과 전환 설계를 동시에 맞추는 데 있었습니다.",
+    evidenceLead: "대표 캠페인 화면과 인터랙션 규칙만 펼쳐 보고, 나머지는 필요할 때 확인할 수 있게 정리했습니다.",
+    resultLead: "이 케이스는 브랜드 톤을 지키면서도 운영과 성과를 함께 만든 작업으로 읽혀야 합니다.",
     constraints: ["짧은 일정", "브랜드 톤 유지", "디바이스 적응형", "운영 속도 요구", "성과성 페이지 설계"],
     ownership: ["이벤트 페이지 반복 퍼블리싱", "iPad 디지털 데모 인터랙션", "Fresh Sale 마크업과 프론트 기능 개발", "운영형 템플릿 정리"],
     decisions: [
@@ -223,23 +235,23 @@ export const legacyCaseIdMap: Record<string, string> = {
 
 export const nowBuilding: NowBuilding = {
   eyebrow: "NOW / CURRENT",
-  title: "애드포터 구조와 UI 시스템 설계",
-  summary: "프론트엔드 기반이 없는 조직에서 공통 구조를 세우고 있습니다.",
-  publicNote: "비공개 화면 대신 구조와 운영 방식만 공개합니다.",
-  highlight: "현재 애드포터에서 Admin·Web·App 기준을 세우는 중입니다.",
+  title: "애드포터 Admin·Web·App 기준 설계",
+  summary: "프론트엔드 기반이 없는 조직에서 화면보다 먼저 공통 뼈대와 작업 기준을 세우는 중입니다.",
+  publicNote: "비공개 화면 대신 구조 설계, 운영 방식, 팀 기준만 공개합니다.",
+  highlight: "현재 애드포터에서 공통 구조와 UI 기준을 잡고 있습니다.",
   liveUrl: "https://adpotter-web.vercel.app/main",
   pillars: [
     {
       title: "Platform Foundation",
-      items: ["Admin·Web·App 구조 설계", "화면 뼈대와 폴더 기준 정리", "서비스 공통 구조 설계"],
+      items: ["Admin·Web·App 공통 뼈대", "화면 뼈대와 폴더 기준", "서비스 공통 구조 정리"],
     },
     {
       title: "System Rules",
-      items: ["MUI 컴포넌트 시스템 설계", "네이밍 규칙 문서화", "반복 패턴과 예외 기준 정리"],
+      items: ["MUI 컴포넌트 시스템", "네이밍 규칙 문서화", "반복 패턴과 예외 기준"],
     },
     {
       title: "Cross-functional Enablement",
-      items: ["협업 허브와 실행 정렬", "기획·디자인·백엔드 사이 조율", "AI 워크플로 전파와 품질 기준 정렬"],
+      items: ["협업 허브와 실행 정렬", "기획·디자인·백엔드 조율", "AI 워크플로와 품질 기준"],
     },
   ],
 };

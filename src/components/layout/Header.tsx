@@ -45,7 +45,7 @@ export function Header() {
               GitHub
             </a>
             <a className="nav-button nav-button--primary" href={siteMeta.resumeUrl} target="_blank" rel="noreferrer">
-              Resume
+              이력서
             </a>
           </div>
         </div>

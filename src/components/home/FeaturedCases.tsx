@@ -4,7 +4,7 @@ import { caseStudies } from "../../content/caseStudies";
 import { caseCardHover, caseMediaImage, caseMediaOverlay, ctaHover, ctaTap, fadeRight, fadeUp, hoverLiftSoft, sectionStagger, sectionStaggerTight } from "../../lib/motion";
 
 const MotionLink = motion(Link);
-const featuredOrder = ["lush-fresh-sale", "edulime-lms", "samsung-ea-map"] as const;
+const featuredOrder = ["lush-fresh-sale", "samsung-ea-map", "edulime-lms"] as const;
 
 export function FeaturedCases() {
   const orderedCases = featuredOrder
@@ -16,8 +16,8 @@ export function FeaturedCases() {
     <section id="cases" className="section section--featured">
       <div className="section-heading">
         <p className="section-eyebrow">FEATURED CASE STUDIES</p>
-        <h2>설계와 결과가 같이 보이는 사례</h2>
-        <p>대표 장면, 핵심 판단, 결과를 한 화면에서 빠르게 읽히게 정리했습니다.</p>
+        <h2>먼저 봐야 할 사례 3개만 남겼습니다.</h2>
+        <p>홈에서는 핵심 장면과 결과만 먼저 보여주고, 상세에서 판단 근거를 이어서 읽을 수 있게 했습니다.</p>
       </div>
 
       <motion.div className="featured-layout" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} variants={sectionStagger}>
@@ -40,19 +40,15 @@ export function FeaturedCases() {
           <div className="case-card__content">
             <p className="callout-label">{leadCase.domain}</p>
             <h3>{leadCase.shortTitle}</h3>
-            <p className="case-card__summary">{leadCase.summary}</p>
+            <p className="case-card__summary">{leadCase.teaser}</p>
+            <p className="case-card__support-outcome">{leadCase.outcomes[0]}</p>
             <div className="case-card__meta-line">
               <span>{leadCase.heroMetric}</span>
               <span>{leadCase.contribution}</span>
             </div>
-            <ul className="list-block">
-              {leadCase.outcomes.slice(0, 2).map((outcome) => (
-                <li key={outcome}>{outcome}</li>
-              ))}
-            </ul>
             <div className="case-card__actions">
               <MotionLink className="case-card__cta" to={`/case/${leadCase.slug}`} whileHover={ctaHover} whileTap={ctaTap}>
-                케이스 스터디 보기
+                대표 사례 보기
                 <span aria-hidden="true">→</span>
               </MotionLink>
             </div>
@@ -85,7 +81,7 @@ export function FeaturedCases() {
                 <div className="case-card__actions case-card__actions--compact">
                   <span className="case-card__metric">{caseStudy.heroMetric}</span>
                   <MotionLink className="case-card__cta case-card__cta--quiet" to={`/case/${caseStudy.slug}`} whileHover={ctaHover} whileTap={ctaTap}>
-                    자세히 보기
+                    사례 보기
                     <span aria-hidden="true">→</span>
                   </MotionLink>
                 </div>
