@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LUSH Fresh Sale — 박윤경 포트폴리오</title>
+<meta name="description" content="반복 이벤트를 자동화해 사이드도 운영할 함께 처리한 프로젝트. iOS 앱스토어 1위 달성." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<style>
+:root {
+  --bg: #07090a;
+  --bg-1: #0b0e10;
+  --bg-2: #101416;
+  --surface: #121618;
+  --surface-hi: #181d20;
+  --border: rgba(255,255,255,.08);
+  --border-hi: rgba(255,255,255,.16);
+  --text: #ebeeec;
+  --text-dim: #a6ada9;
+  --text-faint: #6a736f;
+  --accent: oklch(0.86 0.18 145);
+  --accent-2: oklch(0.72 0.14 155);
+  --accent-glow: oklch(0.86 0.18 145 / 0.3);
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --display: "Space Grotesk","Pretendard Variable",Pretendard,system-ui,sans-serif;
+  --body: "Pretendard Variable",Pretendard,system-ui,-apple-system,sans-serif;
+  /* case accent — warm magenta for LUSH */
+  --case-accent: oklch(0.72 0.22 330);
+  --case-glow: oklch(0.72 0.22 330 / 0.25);
+}
+html[data-theme="light"] {
+  --bg:#f7f6f2; --bg-1:#f0efe9; --bg-2:#e8e7df;
+  --surface:#fff; --surface-hi:#fafaf6;
+  --border:rgba(0,0,0,.08); --border-hi:rgba(0,0,0,.16);
+  --text:#17191a; --text-dim:#4e5350; --text-faint:#878c88;
+  --accent:oklch(0.58 0.18 145); --accent-2:oklch(0.50 0.14 155);
+  --accent-glow:oklch(0.58 0.18 145 / 0.3);
+  --case-accent:oklch(0.55 0.22 330);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.65;letter-spacing:-.005em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent);color:#06100b}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+img{max-width:100%;display:block}
+.container{width:100%;max-width:1100px;margin:0 auto;padding:0 32px}
+@media(max-width:720px){.container{padding:0 20px}}
+
+/* NAV */
+.nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 40px);max-width:1180px;display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 18px;background:color-mix(in srgb,var(--bg-1) 75%,transparent);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid var(--border);border-radius:999px}
+.nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--body);font-weight:700;font-size:15px;letter-spacing:-.015em}
+.nav-brand-mark{width:28px;height:28px;border-radius:8px;background:radial-gradient(120% 120% at 30% 20%,var(--accent),var(--accent-2));box-shadow:0 0 20px -6px var(--accent-glow),inset 0 1px 0 rgba(255,255,255,.25);display:grid;place-items:center;font-family:var(--mono);color:#051008;font-size:13px;font-weight:700}
+.nav-brand .name-en{color:var(--text-faint);margin-left:4px;font-weight:500;font-size:13px}
+.nav-links{display:flex;gap:4px;font-size:13px;font-weight:500}
+.nav-links a{padding:8px 12px;border-radius:999px;color:var(--text-dim);transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--text);background:var(--border)}
+.nav-links a.active{color:var(--accent)}
+.nav-actions{display:flex;gap:8px;align-items:center}
+@media(max-width:860px){.nav-links{display:none}}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-size:13px;font-weight:500;letter-spacing:-.01em;border:1px solid var(--border);transition:border-color .2s,background .2s,color .2s;cursor:pointer;white-space:nowrap}
+.btn-primary{background:var(--accent);color:#051008;border-color:transparent;font-weight:600;box-shadow:0 10px 30px -12px var(--accent-glow)}
+.btn-primary:hover{background:color-mix(in srgb,var(--accent) 90%,white)}
+.btn-ghost{background:transparent;color:var(--text)}
+.btn-ghost:hover{background:var(--surface)}
+.btn-dark{background:var(--surface);color:var(--text)}
+.btn-dark:hover{background:var(--surface-hi)}
+.theme-toggle{width:36px;height:36px;display:grid;place-items:center;border-radius:999px;border:1px solid var(--border);color:var(--text-dim);transition:color .2s,border-color .2s}
+.theme-toggle:hover{color:var(--text);border-color:var(--border-hi)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint)}
+
+/* CASE HERO */
+.case-hero{padding:130px 0 60px;position:relative;overflow:hidden}
+.case-hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(closest-side,var(--case-glow),transparent 70%);filter:blur(60px);top:-30%;right:-15%;pointer-events:none;z-index:0}
+.case-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start}
+@media(max-width:900px){.case-hero-inner{grid-template-columns:1fr;gap:32px}}
+.case-breadcrumb{font-family:var(--mono);font-size:11.5px;color:var(--text-faint);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+.case-breadcrumb a{color:var(--text-faint);transition:color .2s}
+.case-breadcrumb a:hover{color:var(--accent)}
+.case-title{font-family:var(--body);font-weight:700;font-size:clamp(36px,5.5vw,64px);line-height:1.15;letter-spacing:-.03em;margin:0 0 16px;color:var(--text)}
+.case-desc{font-size:16px;color:var(--text-dim);line-height:1.7;margin-bottom:20px;max-width:540px}
+.case-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.case-tag{padding:5px 12px;border:1px solid var(--border);border-radius:999px;font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:.02em}
+.case-tag.accent{border-color:var(--case-accent);color:var(--case-accent)}
+.case-actions{display:flex;gap:8px;flex-wrap:wrap}
+/* thumbnail */
+.case-thumb{background:var(--surface);border:1px solid var(--border-hi);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,.5)}
+.case-thumb-img{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,#2a0a1e 0%,#4a1a3e 40%,#1a0a28 100%);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.case-thumb-img .brand{font-family:var(--display);font-size:24px;font-weight:700;color:rgba(255,255,255,.9);letter-spacing:-.02em;text-shadow:0 4px 20px rgba(0,0,0,.5);position:relative;z-index:1}
+.case-thumb-img::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");background-size:60px 60px}
+.case-thumb-footer{padding:12px 16px;background:var(--bg-1);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.case-thumb-footer .badge{font-family:var(--mono);font-size:11px;color:var(--case-accent);letter-spacing:.04em}
+.case-thumb-footer .label{font-size:12px;color:var(--text-dim)}
+
+/* MAIN CONTENT */
+.case-main{padding:64px 0 80px}
+.case-layout{display:grid;grid-template-columns:1fr 280px;gap:40px;align-items:start}
+@media(max-width:900px){.case-layout{grid-template-columns:1fr;gap:32px}}
+
+/* LEFT COLUMN */
+.case-left{}
+.case-section{margin-bottom:48px}
+.case-section-title{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.case-two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:640px){.case-two-col{grid-template-columns:1fr}}
+.case-sub-label{font-family:var(--mono);font-size:10.5px;color:var(--case-accent);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.case-body-text{font-size:15px;color:var(--text-dim);line-height:1.75}
+.case-body-text p{margin:0 0 12px}
+.case-body-text p:last-child{margin:0}
+.case-body-text strong{color:var(--text);font-weight:600}
+.case-ul{margin:0;padding:0 0 0 18px;color:var(--text-dim);font-size:15px;line-height:1.75}
+.case-ul li{margin-bottom:8px}
+.case-ul li strong{color:var(--text);font-weight:600}
+/* collapsible */
+.collapsible-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:14px 0;border-bottom:1px solid var(--border);margin-bottom:0;user-select:none}
+.collapsible-header .col-title{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint)}
+.collapsible-header .col-toggle{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.04em;transition:color .2s}
+.collapsible-header:hover .col-toggle{color:var(--text)}
+.collapsible-body{padding:20px 0 8px;border-bottom:1px solid var(--border);margin-bottom:32px}
+.collapsible-body.hidden{display:none}
+/* evidence */
+.evidence-main{width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:var(--surface);margin-bottom:16px}
+.evidence-screen{width:100%;aspect-ratio:16/9;background:linear-gradient(145deg,#0a1a10,#0d2218);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.evidence-screen .mock-browser{width:90%;max-width:560px;background:var(--bg-1);border-radius:10px;border:1px solid var(--border-hi);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.mock-browser-bar{background:var(--bg-2);padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.mock-browser-bar .dots{display:flex;gap:5px}
+.mock-browser-bar .dots span{width:9px;height:9px;border-radius:50%;background:var(--border-hi)}
+.mock-browser-bar .url{font-family:var(--mono);font-size:10.5px;color:var(--text-faint);margin-left:10px}
+.mock-browser-content{padding:16px;min-height:120px;background:linear-gradient(135deg,#160820 0%,#2a0e34 50%,#1a0618 100%)}
+.lush-mock-header{background:rgba(0,0,0,.4);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.1)}
+.lush-mock-header .logo{font-size:14px;font-weight:700;color:#fff;letter-spacing:.1em}
+.lush-mock-hero{padding:20px 16px;text-align:center}
+.lush-mock-hero h2{font-size:20px;font-weight:700;color:#fff;margin:0 0 8px;line-height:1.3}
+.lush-mock-hero p{font-size:12px;color:rgba(255,255,255,.6);margin:0 0 12px}
+.lush-mock-hero .cta{display:inline-flex;padding:8px 20px;background:linear-gradient(90deg,#e040fb,#ab47bc);border-radius:999px;font-size:12px;font-weight:600;color:#fff}
+.evidence-caption{padding:10px 14px;font-family:var(--mono);font-size:11px;color:var(--text-faint);background:var(--bg-1);letter-spacing:.02em}
+.evidence-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.evidence-thumb{border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.evidence-thumb .et-screen{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--text-faint)}
+
+/* RIGHT SIDEBAR */
+.case-right{}
+.sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px}
+.sidebar-card-title{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.sidebar-stat-big{font-family:var(--display);font-size:32px;font-weight:700;letter-spacing:-.03em;color:var(--text);margin-bottom:4px}
+.sidebar-stat-label{font-size:13px;color:var(--text-dim);margin-bottom:14px}
+.sidebar-kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px}
+.sidebar-kv:last-child{border-bottom:0}
+.sidebar-kv .k{color:var(--text-faint);font-family:var(--mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase}
+.sidebar-kv .v{color:var(--text);text-align:right}
+.sidebar-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.sidebar-tag{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);padding:3px 9px;background:var(--bg-1);border:1px solid var(--border);border-radius:6px}
+.sidebar-nav-btn{display:block;width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg-1);color:var(--text-dim);font-size:13px;text-align:left;transition:border-color .2s,color .2s,background .2s;margin-bottom:8px;cursor:pointer}
+.sidebar-nav-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--surface)}
+.sidebar-nav-btn .nav-label{font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:4px}
+.badge-nda{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;background:rgba(255,200,0,.08);border:1px solid rgba(255,200,0,.2);border-radius:999px;font-family:var(--mono);font-size:10px;color:#c8a040;letter-spacing:.04em;margin-top:8px}
+
+/* BOTTOM NAV */
+.case-bottom-nav{padding:48px 0;border-top:1px solid var(--border);background:var(--bg-1)}
+.bottom-nav-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:720px){.bottom-nav-grid{grid-template-columns:1fr;gap:16px}}
+.bnav-card{padding:0}
+.bnav-label{font-family:var(--mono);font-size:10.5px;color:var(--text-faint);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.bnav-title{font-family:var(--body);font-size:18px;font-weight:700;letter-spacing:-.02em;margin:0 0 6px;color:var(--text)}
+.bnav-desc{font-size:13px;color:var(--text-dim);line-height:1.6;margin-bottom:14px}
+.bnav-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.02em;transition:gap .2s}
+.bnav-link:hover{gap:10px}
+.bnav-divider{width:1px;background:var(--border)}
+@media(max-width:720px){.bnav-divider{display:none}}
+
+/* FOOTER */
+.case-footer{padding:32px 0 24px;border-top:1px solid var(--border);text-align:center}
+.case-footer p{font-family:var(--mono);font-size:12px;color:var(--text-faint);margin:0 0 16px;letter-spacing:.02em}
+.footer-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">
+    <span class="nav-brand-mark">Y</span>
+    <span>박윤경<span class="name-en">Yoonkyung Park</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html#work">Case Studies</a>
+    <a href="../index.html#experience">Experience</a>
+    <a href="../index.html#skills">Skills</a>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="theme-toggle" aria-label="테마 전환">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a href="../index.html#contact" class="btn btn-primary">이력서</a>
+  </div>
+</nav>
+
+<!-- CASE HERO -->
+<section class="case-hero">
+  <div class="case-hero-glow"></div>
+  <div class="container">
+    <div class="case-hero-inner">
+      <div>
+        <div class="case-breadcrumb">
+          <a href="../index.html">← 전체 사례</a>
+          &nbsp;·&nbsp; CASE #04 &nbsp;·&nbsp; Consumer Commerce
+        </div>
+        <h1 class="case-title">LUSH<br/>Fresh Sale</h1>
+        <p class="case-desc">
+          반복 이벤트를 시즌마다 빠르게 구현하는 것을 넘어, 브랜드 톤과 캠페인 흐름을 UI로 구현한 프로젝트입니다.
+          런칭 후 iOS 앱스토어 전체 1위를 3일간 유지했습니다.
+        </p>
+        <div class="case-tags">
+          <span class="case-tag accent">앱스토어 1위 · 3일</span>
+          <span class="case-tag">Consumer Commerce</span>
+          <span class="case-tag">Campaign Operations</span>
+          <span class="case-tag">기여도 90%</span>
+        </div>
+        <div class="case-actions">
+          <a href="../index.html#work" class="btn btn-dark">← 전체 사례</a>
+          <a href="../index.html#contact" class="btn btn-ghost">이력서</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="case-thumb">
+          <div class="case-thumb-img">
+            <div class="brand">LUSH<br/><span style="font-size:14px;opacity:.7;font-weight:400;">Fresh Sale</span></div>
+          </div>
+          <div class="case-thumb-footer">
+            <span class="badge">앱 1위 · 3일</span>
+            <span class="label">LUSH Fresh Sale</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="case-main">
+  <div class="container">
+    <div class="case-layout">
+
+      <!-- LEFT -->
+      <div class="case-left">
+
+        <!-- 결과 -->
+        <div class="case-section">
+          <div class="case-section-title">결과</div>
+          <div class="case-two-col">
+            <div>
+              <div class="case-sub-label">Results</div>
+              <ul class="case-ul">
+                <li>런칭 직후 <strong>iOS 쇼핑 앱 1위</strong>, 전체 무료 앱 1위를 <strong>3일간 유지</strong></li>
+                <li>이벤트 80% / 디지털 데모 100% / 프레쉬 세일 기여도 90% 달성</li>
+                <li>브랜드 캠페인 특유의 감성적 UI와 전환 흐름을 동시에 충족</li>
+                <li>React 18 + Next.js 13 기반 SSR 최적화로 초기 로딩 개선</li>
+              </ul>
+            </div>
+            <div>
+              <div class="case-sub-label">Reflection</div>
+              <div class="case-body-text">
+                <p>퍼블리싱 품질이 비즈니스 성과에 직결된다는 사실을 처음으로 수치로 확인한 프로젝트입니다.</p>
+                <p>브랜드 톤에 맞는 CSS 애니메이션과 인터랙션이 사용자의 <strong>감정적 연결</strong>을 만들어 전환율로 이어진다는 것을 배웠습니다.</p>
+                <p>이후 모든 UI 작업에서 '보기 좋음'과 '효과 있음'을 함께 검토하는 습관이 생겼습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 문제 -->
+        <div class="case-section">
+          <div class="case-section-title">문제</div>
+          <div class="case-body-text">
+            <p>러쉬코리아는 월 8건 이상의 이벤트 페이지를 운영하면서 브랜드 일관성을 유지해야 했습니다. 프레쉬 세일은 그중에서도 가장 규모가 크고 기대치가 높은 캠페인이었습니다.</p>
+            <p><strong>핵심 난제</strong>는 두 가지였습니다. 첫째, LUSH 특유의 감성적·유기적 비주얼을 코드로 정확히 재현해야 했고, 둘째, iOS/Android 네이티브 앱과 모바일 웹 모두에서 퍼포먼스를 확보해야 했습니다.</p>
+          </div>
+        </div>
+
+        <!-- 역할 -->
+        <div class="case-section">
+          <div class="case-section-title">역할</div>
+          <div class="case-body-text" style="margin-bottom:14px;">
+            풀스택 퍼블리셔로서 디자이너의 Figma 시안을 넘겨받아 UI 구현의 처음부터 끝까지 혼자 담당했습니다.
+          </div>
+          <ul class="case-ul">
+            <li>React 18 + Next.js 13 기반 마크업 및 퍼블리싱 (기여도 90%)</li>
+            <li>Tailwind CSS 유틸리티 기반 반응형 레이아웃 설계</li>
+            <li>iPad 디지털 데모 퍼블리싱 (가로모드 전용, 기여도 100%)</li>
+            <li>프레쉬 세일 마이크업 · 프론트엔드 기능 개발</li>
+            <li>뷰저블 데이터 기반 사용자 체류시간·전환율 개선 분석</li>
+          </ul>
+        </div>
+
+        <!-- 제약 (collapsible) -->
+        <div class="case-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <span class="col-title">제약</span>
+            <span class="col-toggle">접기</span>
+          </div>
+          <div class="collapsible-body">
+            <p style="font-size:14.5px;color:var(--text-dim);margin-bottom:12px;">러쉬코리아는 브랜드 가이드라인이 까다롭고, 이벤트 주기가 짧아 퍼블리셔에게 속도와 품질을 동시에 요구합니다.</p>
+            <ul class="case-ul">
+              <li>브랜드 폰트 라이선스 제약 (자체 웹폰트만 사용)</li>
+              <li>프런트 운지 (Nuxe 계열 유사 제품 노출 금지 등)</li>
+              <li>디자이너와 온 사이트 협업 필수 (원격 작업 제한)</li>
+              <li>광고 소재와 UI가 동일 배포 사이클</li>
+              <li>iOS/Android 크로스 디바이스 필수 검증</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 핵심 판단 (collapsible) -->
+        <div class="case-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <span class="col-title">핵심 판단</span>
+            <span class="col-toggle">접기</span>
+          </div>
+          <div class="collapsible-body">
+            <div class="case-body-text">
+              <p><strong>브랜드 UI는 기술 완성도보다 감성 재현력이 먼저입니다.</strong></p>
+              <p>Figma 시안이 픽셀 퍼펙트여도 움직임과 텍스처가 살아있지 않으면 LUSH답지 않습니다. Tailwind의 유틸리티를 그대로 쓰기보다 SCSS로 커스텀 애니메이션을 병행하는 방식을 선택했고, 이것이 앱스토어 1위라는 결과로 이어졌다고 생각합니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 증거 (collapsible) -->
+        <div class="case-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <span class="col-title">증거</span>
+            <span class="col-toggle">접기</span>
+          </div>
+          <div class="collapsible-body">
+            <p style="font-size:13.5px;color:var(--text-dim);margin-bottom:16px;">대표 화면과 인터랙션 관련 구조 다이어그램을 참고해 주세요.</p>
+            <div class="evidence-main">
+              <div class="evidence-screen">
+                <div class="mock-browser">
+                  <div class="mock-browser-bar">
+                    <div class="dots"><span></span><span></span><span></span></div>
+                    <span class="url">lushkorea.com/fresh-sale</span>
+                  </div>
+                  <div class="mock-browser-content">
+                    <div class="lush-mock-header">
+                      <span class="logo">LUSH</span>
+                      <span style="font-size:11px;color:rgba(255,255,255,.5);">메뉴 · 검색 · 장바구니</span>
+                    </div>
+                    <div class="lush-mock-hero">
+                      <h2>당신의 욕조에서는<br/>무슨 일이 일어날까요?</h2>
+                      <p>Fresh Sale — 한정 특가</p>
+                      <span class="cta">지금 쇼핑하기</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="evidence-caption">Campaign Template Diagram — 재사용 가능한 이벤트 템플릿 구조</div>
+            </div>
+            <div class="evidence-grid">
+              <div class="evidence-thumb">
+                <div class="et-screen" style="background:linear-gradient(135deg,#3a0a2e,#1a0618);">
+                  <span style="color:rgba(255,255,255,.4);">모바일 시안 · iOS</span>
+                </div>
+              </div>
+              <div class="evidence-thumb">
+                <div class="et-screen" style="background:#000;flex-direction:column;gap:8px;">
+                  <span style="font-size:16px;font-weight:700;color:#fff;letter-spacing:.1em;">LUSH</span>
+                  <span style="font-size:13px;font-weight:700;color:#8dff4e;">50% OFF</span>
+                  <span style="font-size:11px;color:rgba(255,255,255,.6);">FRESH SALE · 오, 신선하군요!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /case-left -->
+
+      <!-- RIGHT SIDEBAR -->
+      <aside class="case-right">
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">핵심 정보</div>
+          <div class="sidebar-stat-big">앱 1위</div>
+          <div class="sidebar-stat-label">iOS 쇼핑 앱 · 3일 유지</div>
+          <div class="sidebar-kv"><span class="k">Category</span><span class="v">Consumer Commerce</span></div>
+          <div class="sidebar-kv"><span class="k">기여도</span><span class="v">이벤트 80% · 세일 90%</span></div>
+          <div class="sidebar-kv"><span class="k">기간</span><span class="v">2023.03 — 2024.03</span></div>
+          <div class="sidebar-kv"><span class="k">공개</span><span class="v">부분 공개</span></div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Stack</div>
+          <div class="sidebar-tags">
+            <span class="sidebar-tag">React 18</span>
+            <span class="sidebar-tag">Next.js 13</span>
+            <span class="sidebar-tag">Tailwind CSS</span>
+            <span class="sidebar-tag">SCSS</span>
+            <span class="sidebar-tag">TypeScript</span>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">다음 이력</div>
+          <a href="../index.html#work" class="sidebar-nav-btn">
+            <span class="nav-label">주요 사례</span>
+            전체 케이스 보기
+          </a>
+          <a href="s-ea-map.html" class="sidebar-nav-btn">
+            <span class="nav-label">다음 케이스</span>
+            S사 엔지니어링 MAP
+          </a>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="case-bottom-nav">
+  <div class="container">
+    <div class="bottom-nav-grid">
+      <div class="bnav-card">
+        <div class="bnav-label">Next Case</div>
+        <div class="bnav-title">S사 엔지니어링 MAP</div>
+        <div class="bnav-desc">복합 Admin UI 구조를 전담 설계한 프로젝트입니다.</div>
+        <a href="s-ea-map.html" class="bnav-link">다음 케이스 보기 →</a>
+      </div>
+      <div class="bnav-divider"></div>
+      <div class="bnav-card">
+        <div class="bnav-label">Now</div>
+        <div class="bnav-title">애드포터</div>
+        <div class="bnav-desc">현재 애드포터에서 모노레포 구조와 AI 기반 워크플로 정착 중입니다.</div>
+        <a href="../index.html#experience" class="bnav-link">현재 역할 보기 →</a>
+      </div>
+      <div class="bnav-divider"></div>
+      <div class="bnav-card">
+        <div class="bnav-label">Next Conversation</div>
+        <div class="bnav-title">주요 사례와 현재 역할부터 바로 확인할 수 있습니다.</div>
+        <div class="bnav-desc" style="margin-top:10px;">
+          <a href="mailto:yoonkp0233@gmail.com" style="color:var(--accent);font-family:var(--mono);font-size:12px;">yoonkp0233@gmail.com</a>
+        </div>
+        <a href="../index.html#contact" class="bnav-link">이력서 보기 →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="case-footer">
+  <div class="container">
+    <p>현재 역할과 대표 사례만 이어서 보시면 됩니다.</p>
+    <div class="footer-actions">
+      <a href="mailto:yoonkp0233@gmail.com" class="btn btn-primary">yoonkp0233@gmail.com</a>
+      <a href="../index.html#experience" class="btn btn-dark">현재 역할</a>
+      <a href="../index.html#work" class="btn btn-ghost">주요 사례</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleCollapse(header) {
+  const body = header.nextElementSibling;
+  const toggle = header.querySelector('.col-toggle');
+  if (body.classList.contains('hidden')) {
+    body.classList.remove('hidden');
+    toggle.textContent = '접기';
+  } else {
+    body.classList.add('hidden');
+    toggle.textContent = '펼치기';
+  }
+}
+
+// theme
+const saved = JSON.parse(localStorage.getItem('pf-tweaks') || '{}');
+if (saved.theme) document.documentElement.setAttribute('data-theme', saved.theme);
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  const t = JSON.parse(localStorage.getItem('pf-tweaks') || '{}');
+  t.theme = next;
+  localStorage.setItem('pf-tweaks', JSON.stringify(t));
+});
+</script>
+</body>
+</html>

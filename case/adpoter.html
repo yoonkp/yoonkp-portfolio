@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>애드포터 모노레포 구조 수립 — 박윤경 포트폴리오</title>
+<meta name="description" content="스타트업 초기 모노레포 구조 설계, AI 워크플로 최초 도입, Cross-functional 허브 역할 수행." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<style>
+:root {
+  --bg:#07090a; --bg-1:#0b0e10; --bg-2:#101416;
+  --surface:#121618; --surface-hi:#181d20;
+  --border:rgba(255,255,255,.08); --border-hi:rgba(255,255,255,.16);
+  --text:#ebeeec; --text-dim:#a6ada9; --text-faint:#6a736f;
+  --accent:oklch(0.86 0.18 145); --accent-2:oklch(0.72 0.14 155);
+  --accent-glow:oklch(0.86 0.18 145 / 0.3);
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --display:"Space Grotesk","Pretendard Variable",Pretendard,system-ui,sans-serif;
+  --body:"Pretendard Variable",Pretendard,system-ui,-apple-system,sans-serif;
+  --case-accent:oklch(0.82 0.18 145);
+  --case-glow:oklch(0.82 0.18 145 / 0.25);
+}
+html[data-theme="light"] {
+  --bg:#f7f6f2; --bg-1:#f0efe9; --bg-2:#e8e7df;
+  --surface:#fff; --surface-hi:#fafaf6;
+  --border:rgba(0,0,0,.08); --border-hi:rgba(0,0,0,.16);
+  --text:#17191a; --text-dim:#4e5350; --text-faint:#878c88;
+  --accent:oklch(0.58 0.18 145); --accent-2:oklch(0.50 0.14 155);
+  --accent-glow:oklch(0.58 0.18 145 / 0.3);
+  --case-accent:oklch(0.48 0.18 145);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.65;letter-spacing:-.005em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent);color:#06100b}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+img{max-width:100%;display:block}
+.container{width:100%;max-width:1100px;margin:0 auto;padding:0 32px}
+@media(max-width:720px){.container{padding:0 20px}}
+.nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 40px);max-width:1180px;display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 18px;background:color-mix(in srgb,var(--bg-1) 75%,transparent);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid var(--border);border-radius:999px}
+.nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--body);font-weight:700;font-size:15px;letter-spacing:-.015em}
+.nav-brand-mark{width:28px;height:28px;border-radius:8px;background:radial-gradient(120% 120% at 30% 20%,var(--accent),var(--accent-2));box-shadow:0 0 20px -6px var(--accent-glow),inset 0 1px 0 rgba(255,255,255,.25);display:grid;place-items:center;font-family:var(--mono);color:#051008;font-size:13px;font-weight:700}
+.nav-brand .name-en{color:var(--text-faint);margin-left:4px;font-weight:500;font-size:13px}
+.nav-links{display:flex;gap:4px;font-size:13px;font-weight:500}
+.nav-links a{padding:8px 12px;border-radius:999px;color:var(--text-dim);transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--text);background:var(--border)}
+.nav-actions{display:flex;gap:8px;align-items:center}
+@media(max-width:860px){.nav-links{display:none}}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-size:13px;font-weight:500;letter-spacing:-.01em;border:1px solid var(--border);transition:border-color .2s,background .2s,color .2s;cursor:pointer;white-space:nowrap}
+.btn-primary{background:var(--accent);color:#051008;border-color:transparent;font-weight:600}
+.btn-primary:hover{background:color-mix(in srgb,var(--accent) 90%,white)}
+.btn-dark{background:var(--surface);color:var(--text)}
+.btn-dark:hover{background:var(--surface-hi)}
+.btn-ghost{background:transparent;color:var(--text)}
+.btn-ghost:hover{background:var(--surface)}
+.theme-toggle{width:36px;height:36px;display:grid;place-items:center;border-radius:999px;border:1px solid var(--border);color:var(--text-dim)}
+.theme-toggle:hover{color:var(--text);border-color:var(--border-hi)}
+
+.case-hero{padding:130px 0 60px;position:relative;overflow:hidden}
+.case-hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(closest-side,var(--case-glow),transparent 70%);filter:blur(60px);top:-30%;right:-15%;pointer-events:none;z-index:0}
+.case-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start}
+@media(max-width:900px){.case-hero-inner{grid-template-columns:1fr;gap:32px}}
+.case-breadcrumb{font-family:var(--mono);font-size:11.5px;color:var(--text-faint);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+.case-breadcrumb a{color:var(--text-faint);transition:color .2s}
+.case-breadcrumb a:hover{color:var(--accent)}
+.case-title{font-family:var(--body);font-weight:700;font-size:clamp(36px,5.5vw,60px);line-height:1.15;letter-spacing:-.03em;margin:0 0 16px;color:var(--text)}
+.case-desc{font-size:16px;color:var(--text-dim);line-height:1.7;margin-bottom:20px;max-width:540px}
+.case-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.case-tag{padding:5px 12px;border:1px solid var(--border);border-radius:999px;font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:.02em}
+.case-tag.accent{border-color:var(--case-accent);color:var(--case-accent)}
+.case-actions{display:flex;gap:8px;flex-wrap:wrap}
+.case-thumb{background:var(--surface);border:1px solid var(--border-hi);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,.5)}
+.case-thumb-img{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,#071a0e,#0d2a18,#051408);display:flex;align-items:center;justify-content:center;padding:20px;font-family:var(--mono)}
+.case-thumb-footer{padding:12px 16px;background:var(--bg-1);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.case-thumb-footer .badge{font-family:var(--mono);font-size:11px;color:var(--case-accent);letter-spacing:.04em}
+.case-thumb-footer .label{font-size:12px;color:var(--text-dim)}
+
+.case-main{padding:64px 0 80px}
+.case-layout{display:grid;grid-template-columns:1fr 280px;gap:40px;align-items:start}
+@media(max-width:900px){.case-layout{grid-template-columns:1fr;gap:32px}}
+.case-section{margin-bottom:48px}
+.case-section-title{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.case-two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:640px){.case-two-col{grid-template-columns:1fr}}
+.case-sub-label{font-family:var(--mono);font-size:10.5px;color:var(--case-accent);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.case-body-text{font-size:15px;color:var(--text-dim);line-height:1.75}
+.case-body-text p{margin:0 0 12px}
+.case-body-text p:last-child{margin:0}
+.case-body-text strong{color:var(--text);font-weight:600}
+.case-ul{margin:0;padding:0 0 0 18px;color:var(--text-dim);font-size:15px;line-height:1.75}
+.case-ul li{margin-bottom:8px}
+.case-ul li strong{color:var(--text);font-weight:600}
+.collapsible-header{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:14px 0;border-bottom:1px solid var(--border);user-select:none}
+.collapsible-header .col-title{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint)}
+.collapsible-header .col-toggle{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.04em}
+.collapsible-header:hover .col-toggle{color:var(--text)}
+.collapsible-body{padding:20px 0 8px;border-bottom:1px solid var(--border);margin-bottom:32px}
+.collapsible-body.hidden{display:none}
+.sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px}
+.sidebar-card-title{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.sidebar-stat-big{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-.03em;color:var(--text);margin-bottom:4px}
+.sidebar-stat-label{font-size:13px;color:var(--text-dim);margin-bottom:14px}
+.sidebar-kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px}
+.sidebar-kv:last-child{border-bottom:0}
+.sidebar-kv .k{color:var(--text-faint);font-family:var(--mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase}
+.sidebar-kv .v{color:var(--text);text-align:right}
+.sidebar-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.sidebar-tag{font-family:var(--mono);font-size:10.5px;color:var(--text-dim);padding:3px 9px;background:var(--bg-1);border:1px solid var(--border);border-radius:6px}
+.sidebar-nav-btn{display:block;width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg-1);color:var(--text-dim);font-size:13px;text-align:left;transition:border-color .2s,color .2s,background .2s;margin-bottom:8px}
+.sidebar-nav-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--surface)}
+.sidebar-nav-btn .nav-label{font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.04em;text-transform:uppercase;display:block;margin-bottom:4px}
+.ai-highlight{padding:14px 16px;background:color-mix(in srgb,var(--accent) 8%,transparent);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);border-radius:12px;font-size:14px;color:var(--text-dim);line-height:1.7;margin-top:16px}
+.ai-highlight strong{color:var(--accent);font-weight:600}
+.case-bottom-nav{padding:48px 0;border-top:1px solid var(--border);background:var(--bg-1)}
+.bottom-nav-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:720px){.bottom-nav-grid{grid-template-columns:1fr;gap:16px}}
+.bnav-label{font-family:var(--mono);font-size:10.5px;color:var(--text-faint);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.bnav-title{font-family:var(--body);font-size:18px;font-weight:700;letter-spacing:-.02em;margin:0 0 6px;color:var(--text)}
+.bnav-desc{font-size:13px;color:var(--text-dim);line-height:1.6;margin-bottom:14px}
+.bnav-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11.5px;color:var(--accent);letter-spacing:.02em;transition:gap .2s}
+.bnav-link:hover{gap:10px}
+.bnav-divider{width:1px;background:var(--border)}
+@media(max-width:720px){.bnav-divider{display:none}}
+.case-footer{padding:32px 0 24px;border-top:1px solid var(--border);text-align:center}
+.case-footer p{font-family:var(--mono);font-size:12px;color:var(--text-faint);margin:0 0 16px;letter-spacing:.02em}
+.footer-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">
+    <span class="nav-brand-mark">Y</span>
+    <span>박윤경<span class="name-en">Yoonkyung Park</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html#work">Case Studies</a>
+    <a href="../index.html#experience">Experience</a>
+    <a href="../index.html#skills">Skills</a>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="theme-toggle" aria-label="테마 전환">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a href="../index.html#contact" class="btn btn-primary">이력서</a>
+  </div>
+</nav>
+
+<section class="case-hero">
+  <div class="case-hero-glow"></div>
+  <div class="container">
+    <div class="case-hero-inner">
+      <div>
+        <div class="case-breadcrumb">
+          <a href="../index.html">← 전체 사례</a>
+          &nbsp;·&nbsp; CASE #01 &nbsp;·&nbsp; 재직 중 · Startup
+        </div>
+        <h1 class="case-title">애드포터<br/>모노레포 구조 수립</h1>
+        <p class="case-desc">
+          스타트업 초기, 기획·디자인·개발 파이프라인이 비동기 상태에서 Admin · Web · Mobile-App 모노레포 구조를 단독 설계했습니다.
+          팀 내 AI 워크플로 최초 도입까지 함께 수행한 현재 진행형 프로젝트입니다.
+        </p>
+        <div class="case-tags">
+          <span class="case-tag accent">재직 중 · 진행 중</span>
+          <span class="case-tag">Startup · PL 과장</span>
+          <span class="case-tag">모노레포</span>
+          <span class="case-tag">AI 워크플로 도입</span>
+        </div>
+        <div class="case-actions">
+          <a href="../index.html#work" class="btn btn-dark">← 전체 사례</a>
+          <a href="../index.html#contact" class="btn btn-ghost">이력서</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="case-thumb">
+          <div class="case-thumb-img">
+            <div style="width:100%;max-width:340px;">
+              <div style="font-family:var(--mono);font-size:10px;color:var(--text-faint);margin-bottom:12px;letter-spacing:.04em;">MONOREPO STRUCTURE</div>
+              <div style="padding:10px 14px;background:rgba(0,0,0,.3);border:1px solid var(--border);border-radius:8px;font-family:var(--mono);font-size:11px;line-height:1.9;">
+                <div style="color:var(--accent);">apps/</div>
+                <div style="padding-left:14px;color:var(--text-dim);">├── admin/</div>
+                <div style="padding-left:14px;color:var(--text-dim);">├── web/</div>
+                <div style="padding-left:14px;color:var(--text-dim);">└── mobile-app/</div>
+                <div style="color:var(--accent);margin-top:6px;">packages/</div>
+                <div style="padding-left:14px;color:var(--text-dim);">├── ui-components/</div>
+                <div style="padding-left:14px;color:var(--text-dim);">└── shared-utils/</div>
+                <div style="color:var(--text-faint);margin-top:6px;font-size:10px;">// MUI + 컨벤션 문서화</div>
+              </div>
+            </div>
+          </div>
+          <div class="case-thumb-footer">
+            <span class="badge">재직 중 · 진행 중</span>
+            <span class="label">㈜애드포터</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="case-main">
+  <div class="container">
+    <div class="case-layout">
+      <div class="case-left">
+
+        <div class="case-section">
+          <div class="case-section-title">결과</div>
+          <div class="case-two-col">
+            <div>
+              <div class="case-sub-label">Results (현재 진행 중)</div>
+              <ul class="case-ul">
+                <li>Admin · Web · Mobile-App <strong>모노레포 구조 설계·수립</strong> 완료</li>
+                <li>MUI 기반 공통 컴포넌트 시스템 + 네이밍 컨벤션 문서화</li>
+                <li><strong>AI 워크플로 팀 최초 도입</strong> 및 온보딩 가이드 재설계</li>
+                <li>기획·디자인 공백 구간의 개발 판단 기준 자체 정의</li>
+              </ul>
+            </div>
+            <div>
+              <div class="case-sub-label">Reflection</div>
+              <div class="case-body-text">
+                <p>스타트업에서 '혼돈 → 구조'를 만든다는 것이 무엇인지를 가장 직접적으로 배우고 있습니다.</p>
+                <p>역할 경계가 모호할 때 <strong>판단 기준 자체를 먼저 만들어야</strong> 팀이 움직인다는 사실을 매일 확인하고 있습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-section">
+          <div class="case-section-title">문제</div>
+          <div class="case-body-text">
+            <p>애드포터는 스타트업 초기 단계로, 기획·디자인·개발 파이프라인이 동기화되어 있지 않았습니다. 역할 경계가 불명확하고 의사결정이 느렸습니다.</p>
+            <p><strong>핵심 과제</strong>: 프론트엔드 리소스가 사실상 혼자인 상황에서, Admin · Web · Mobile-App 세 개의 앱이 각각 일관성을 유지하며 개발될 수 있는 구조를 만드는 것이었습니다.</p>
+          </div>
+        </div>
+
+        <div class="case-section">
+          <div class="case-section-title">역할</div>
+          <div class="case-body-text" style="margin-bottom:14px;">
+            PL 과장 / 개발PM으로서 UI 아키텍처 설계부터 팀의 AI 워크플로 도입까지 전담했습니다.
+          </div>
+          <ul class="case-ul">
+            <li>Admin · Web · Mobile-App <strong>모노레포 구조 설계</strong> 및 수립</li>
+            <li>MUI 기반 컴포넌트 시스템 설계, 네이밍 컨벤션 문서화</li>
+            <li>기획·디자인 공백 시 <strong>개발 판단 기준 자체 정의</strong></li>
+            <li>외부 기획자·디자이너·레거시 백엔드·외주 CTO 간 Cross-functional 허브</li>
+            <li><strong>팀 내 AI 도구 최초 도입</strong> 및 워크플로 전파 (Claude, Cursor, GPT-4o)</li>
+          </ul>
+          <div class="ai-highlight">
+            <strong>AI 워크플로 도입 핵심</strong>: Claude와 Cursor를 팀의 실무 도구로 정착시키고, 신입 퍼블리셔 온보딩 가이드를 AI 기반으로 재설계해 2개월 내 실무 투입을 실현했습니다.
+          </div>
+        </div>
+
+        <div class="case-section">
+          <div class="collapsible-header" onclick="toggleCollapse(this)">
+            <span class="col-title">핵심 판단</span>
+            <span class="col-toggle">접기</span>
+          </div>
+          <div class="collapsible-body">
+            <div class="case-body-text">
+              <p><strong>구조가 없으면 속도도 없습니다.</strong></p>
+              <p>스타트업에서 "일단 빠르게"라는 명분으로 구조 없이 달리면 기술 부채가 쌓이고, 결국 속도 자체가 느려집니다. 초기에 모노레포 구조와 컨벤션을 잡는 데 투자한 시간이 이후 개발 속도를 끌어올렸습니다.</p>
+              <p>AI 도구는 '개인 생산성 도구'가 아니라 <strong>'팀의 공유 인프라'</strong>로 정착시켜야 효과가 납니다. 이를 직접 실험하고 증명한 프로젝트입니다.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="case-right">
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">핵심 정보</div>
+          <div class="sidebar-stat-big">현재</div>
+          <div class="sidebar-stat-label">재직 중 · 진행 중</div>
+          <div class="sidebar-kv"><span class="k">Role</span><span class="v">PL 과장 · 개발PM</span></div>
+          <div class="sidebar-kv"><span class="k">기간</span><span class="v">2024.09 — 현재</span></div>
+          <div class="sidebar-kv"><span class="k">팀 규모</span><span class="v">스타트업 소규모</span></div>
+          <div class="sidebar-kv"><span class="k">AI 도입</span><span class="v">최초 도입·전파</span></div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">Stack · AI</div>
+          <div class="sidebar-tags">
+            <span class="sidebar-tag">React 18</span>
+            <span class="sidebar-tag">TypeScript</span>
+            <span class="sidebar-tag">MUI</span>
+            <span class="sidebar-tag">모노레포</span>
+            <span class="sidebar-tag">Claude</span>
+            <span class="sidebar-tag">Cursor</span>
+            <span class="sidebar-tag">GPT-4o</span>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">다음 이력</div>
+          <a href="../index.html#work" class="sidebar-nav-btn">
+            <span class="nav-label">주요 사례</span>
+            전체 케이스 보기
+          </a>
+          <a href="s-ea-map.html" class="sidebar-nav-btn">
+            <span class="nav-label">다음 케이스</span>
+            S사 엔지니어링 MAP
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<div class="case-bottom-nav">
+  <div class="container">
+    <div class="bottom-nav-grid">
+      <div>
+        <div class="bnav-label">Next Case</div>
+        <div class="bnav-title">S사 엔지니어링 MAP</div>
+        <div class="bnav-desc">복합 Admin UI 구조를 전담 설계한 프로젝트입니다.</div>
+        <a href="s-ea-map.html" class="bnav-link">다음 케이스 보기 →</a>
+      </div>
+      <div class="bnav-divider"></div>
+      <div>
+        <div class="bnav-label">Now</div>
+        <div class="bnav-title">애드포터 — 현재 재직 중</div>
+        <div class="bnav-desc">모노레포 구조 수립 및 AI 워크플로 정착 작업 중입니다.</div>
+        <a href="../index.html#experience" class="bnav-link">현재 역할 보기 →</a>
+      </div>
+      <div class="bnav-divider"></div>
+      <div>
+        <div class="bnav-label">Next Conversation</div>
+        <div class="bnav-title">이어서 대화하고 싶으시면 연락 주세요.</div>
+        <div style="margin-top:10px;margin-bottom:14px;">
+          <a href="mailto:yoonkp0233@gmail.com" style="color:var(--accent);font-family:var(--mono);font-size:12px;">yoonkp0233@gmail.com</a>
+        </div>
+        <a href="../index.html#contact" class="bnav-link">이력서 보기 →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="case-footer">
+  <div class="container">
+    <p>현재 역할과 대표 사례만 이어서 보시면 됩니다.</p>
+    <div class="footer-actions">
+      <a href="mailto:yoonkp0233@gmail.com" class="btn btn-primary">yoonkp0233@gmail.com</a>
+      <a href="../index.html#experience" class="btn btn-dark">현재 역할</a>
+      <a href="../index.html#work" class="btn btn-ghost">주요 사례</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleCollapse(header) {
+  const body = header.nextElementSibling;
+  const toggle = header.querySelector('.col-toggle');
+  if (body.classList.contains('hidden')) { body.classList.remove('hidden'); toggle.textContent='접기'; }
+  else { body.classList.add('hidden'); toggle.textContent='펼치기'; }
+}
+const saved = JSON.parse(localStorage.getItem('pf-tweaks') || '{}');
+if (saved.theme) document.documentElement.setAttribute('data-theme', saved.theme);
+document.getElementById('theme-toggle').addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  const t = JSON.parse(localStorage.getItem('pf-tweaks') || '{}'); t.theme=next;
+  localStorage.setItem('pf-tweaks', JSON.stringify(t));
+});
+</script>
+</body>
+</html>
