@@ -3,77 +3,15 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>박윤경 — UI Developer · Frontend · PM</title>
-<meta name="description" content="박윤경 포트폴리오 — 문제를 구조화하고, 시스템으로 반복을 제거하는 UI 개발자." />
+<title>박윤경 — React UI 개발자 · UI Architect</title>
+<meta name="description" content="박윤경 포트폴리오. 9년 6개월+ 경력의 React UI 개발자 · UI Architect. 구조·규칙·검증으로 일관된 UI를 만드는 사람." />
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<style id="print-overrides">
-  @page { size: A4 portrait; margin: 14mm 12mm; }
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 
-  html, body {
-    cursor: auto !important;
-  }
-  body { overflow-x: visible !important; }
-
-  /* hide cursor, tweaks, interactive-only chrome */
-  .cursor-dot, .cursor-ring, .tweaks, .scroll-cue, .marquee, .noise,
-  #project-preview, .theme-toggle { display: none !important; }
-
-  /* nav as static top bar (non-fixed for print) */
-  .nav {
-    position: static !important;
-    transform: none !important;
-    width: 100% !important;
-    margin: 0 0 20px 0 !important;
-    border-radius: 14px !important;
-    backdrop-filter: none !important;
-  }
-
-  /* Force dark-theme colors to print (override default browser behavior) */
-  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-
-  /* Reveal elements always visible */
-  .reveal { opacity: 1 !important; transform: none !important; }
-
-  /* Disable animations and transitions */
-  *, *::before, *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-  .hero-title .line span { transform: none !important; }
-
-  section { padding: 48px 0 !important; break-inside: avoid; }
-  .hero { min-height: auto !important; padding: 24px 0 48px !important; }
-
-  /* Remove big hero glows for print */
-  .hero-glow { display: none !important; }
-
-  /* Static hero layout */
-  .hero-inner { grid-template-columns: 1fr !important; }
-  .hero-visual { display: none !important; }
-  .hero-title { font-size: 56px !important; line-height: 1.05 !important; }
-
-  /* Section titles slightly smaller */
-  .section-title { font-size: 36px !important; }
-  .contact h2 { font-size: 44px !important; line-height: 1.1 !important; }
-
-  @media print {
-    body { background: #07090a !important; color: #e7ecea !important; }
-    section { page-break-inside: avoid; }
-    #strengths, #metrics, #work, #experience, #skills, #about, #contact {
-      break-before: page;
-    }
-    .hero { break-after: page; }
-    .project, .strength, .tl-item, .skill, .metric { break-inside: avoid; }
-    .hero-ctas, .contact-actions { display: none !important; }
-  }
-</style>
 <style>
-/* ============================================
-   박윤경 Portfolio — base styles
-   ============================================ */
-
 :root {
   --bg: #07090a;
   --bg-1: #0b0e10;
@@ -81,117 +19,64 @@
   --surface: #121618;
   --surface-hi: #181d20;
   --border: rgba(255, 255, 255, 0.08);
-  --border-hi: rgba(255, 255, 255, 0.14);
-  --text: #e7ecea;
-  --text-dim: #9aa39f;
-  --text-faint: #5b6561;
+  --border-hi: rgba(255, 255, 255, 0.16);
+  --text: #ebeeec;
+  --text-dim: #a6ada9;
+  --text-faint: #6a736f;
   --accent: oklch(0.86 0.18 145);
   --accent-2: oklch(0.72 0.14 155);
-  --accent-violet: oklch(0.72 0.18 300);
-  --accent-glow: oklch(0.86 0.18 145 / 0.35);
-  --grid: rgba(120, 240, 180, 0.06);
+  --accent-glow: oklch(0.86 0.18 145 / 0.3);
+  --grid: rgba(120, 240, 180, 0.05);
   --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
-  --display: "Space Grotesk", "Pretendard", system-ui, sans-serif;
-  --body: "Inter", "Pretendard", system-ui, sans-serif;
+  --display: "Space Grotesk", "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  --body: "Pretendard Variable", Pretendard, system-ui, -apple-system, sans-serif;
 }
 
 html[data-theme="light"] {
-  --bg: #f6f5f1;
-  --bg-1: #efeee8;
-  --bg-2: #e9e8e0;
+  --bg: #f7f6f2;
+  --bg-1: #f0efe9;
+  --bg-2: #e8e7df;
   --surface: #ffffff;
   --surface-hi: #fafaf6;
-  --border: rgba(0, 0, 0, 0.09);
+  --border: rgba(0, 0, 0, 0.08);
   --border-hi: rgba(0, 0, 0, 0.16);
-  --text: #141816;
-  --text-dim: #555b58;
-  --text-faint: #8a908c;
-  --grid: rgba(40, 90, 70, 0.08);
-  --accent: oklch(0.62 0.18 145);
-  --accent-2: oklch(0.55 0.14 155);
+  --text: #17191a;
+  --text-dim: #4e5350;
+  --text-faint: #878c88;
+  --grid: rgba(30, 80, 60, 0.08);
+  --accent: oklch(0.58 0.18 145);
+  --accent-2: oklch(0.50 0.14 155);
+  --accent-glow: oklch(0.58 0.18 145 / 0.3);
 }
 
-*,
-*::before,
-*::after { box-sizing: border-box; }
-
+*, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--body);
   font-size: 16px;
-  line-height: 1.55;
+  line-height: 1.65;
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
-  cursor: none;
 }
-
-@media (pointer: coarse) {
-  body { cursor: auto; }
-}
-
-::selection {
-  background: var(--accent);
-  color: #06100b;
-}
-
+::selection { background: var(--accent); color: #06100b; }
 a { color: inherit; text-decoration: none; }
-button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: none; }
-@media (pointer: coarse) { button { cursor: pointer; } }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+img { max-width: 100%; display: block; }
 
-/* ---------- custom cursor ---------- */
-.cursor-dot,
-.cursor-ring {
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  will-change: transform;
-  mix-blend-mode: difference;
-}
-.cursor-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  transition: width .2s, height .2s, background .2s;
-}
-.cursor-ring {
-  width: 34px; height: 34px;
-  border: 1.5px solid var(--accent);
-  border-radius: 50%;
-  transition: width .25s cubic-bezier(.2,.9,.2,1), height .25s cubic-bezier(.2,.9,.2,1), border-color .2s, background .2s;
-}
-.cursor-ring.hover {
-  width: 58px; height: 58px;
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
-}
-.cursor-dot.hidden, .cursor-ring.hidden { opacity: 0; }
-@media (pointer: coarse) {
-  .cursor-dot, .cursor-ring { display: none; }
-}
-
-/* ---------- layout shells ---------- */
 .container {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 0 32px;
 }
-@media (max-width: 720px) {
-  .container { padding: 0 20px; }
-}
+@media (max-width: 720px) { .container { padding: 0 20px; } }
 
-section {
-  position: relative;
-  padding: 120px 0;
-}
-@media (max-width: 720px) {
-  section { padding: 80px 0; }
-}
+section { position: relative; padding: 120px 0; }
+@media (max-width: 720px) { section { padding: 72px 0; } }
 
 .eyebrow {
   display: inline-flex;
@@ -209,50 +94,45 @@ section {
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 12px var(--accent-glow);
-  animation: pulse 2s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%      { opacity: .5; transform: scale(1.4); }
 }
 
 .section-title {
   font-family: var(--display);
-  font-size: clamp(32px, 5vw, 54px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  font-weight: 500;
+  font-size: clamp(30px, 4.5vw, 48px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 600;
   margin: 14px 0 18px;
-  color: var(--text);
   text-wrap: balance;
+  color: var(--text);
+}
+.section-title-kr {
+  font-family: var(--body);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
 }
 .section-sub {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--text-dim);
-  max-width: 680px;
+  max-width: 620px;
   text-wrap: pretty;
+  line-height: 1.7;
 }
 
-/* ---------- reveal animation ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+  transform: translateY(24px);
+  transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);
 }
-.reveal.in {
-  opacity: 1;
-  transform: translateY(0);
-}
-.reveal[data-delay="1"] { transition-delay: .08s; }
-.reveal[data-delay="2"] { transition-delay: .16s; }
-.reveal[data-delay="3"] { transition-delay: .24s; }
-.reveal[data-delay="4"] { transition-delay: .32s; }
-.reveal[data-delay="5"] { transition-delay: .4s; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal[data-delay="1"] { transition-delay: .06s; }
+.reveal[data-delay="2"] { transition-delay: .12s; }
+.reveal[data-delay="3"] { transition-delay: .18s; }
+.reveal[data-delay="4"] { transition-delay: .24s; }
 
-/* ---------- global noise + grid bg ---------- */
 .grid-bg {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   pointer-events: none;
   background-image:
     linear-gradient(to right, var(--grid) 1px, transparent 1px),
@@ -261,35 +141,20 @@ section {
   mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
 }
-.noise {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.035;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-}
 
-</style>
-<style>
-/* ============================================
-   Components
-   ============================================ */
-
-/* ---------- nav ---------- */
+/* ---------- NAV ---------- */
 .nav {
   position: fixed;
   top: 18px; left: 50%;
   transform: translateX(-50%);
   z-index: 100;
   width: calc(100% - 40px);
-  max-width: 1280px;
+  max-width: 1180px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 14px 12px 18px;
-  background: color-mix(in srgb, var(--bg-1) 70%, transparent);
+  padding: 10px 12px 10px 18px;
+  background: color-mix(in srgb, var(--bg-1) 75%, transparent);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   border: 1px solid var(--border);
@@ -297,28 +162,27 @@ section {
 }
 .nav-brand {
   display: flex; align-items: center; gap: 10px;
-  font-family: var(--display);
-  font-weight: 600;
+  font-family: var(--body);
+  font-weight: 700;
   font-size: 15px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 .nav-brand-mark {
   width: 28px; height: 28px;
   border-radius: 8px;
   background: radial-gradient(120% 120% at 30% 20%, var(--accent), var(--accent-2));
-  box-shadow: 0 0 24px -6px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,.25);
+  box-shadow: 0 0 20px -6px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,.25);
   display: grid; place-items: center;
   font-family: var(--mono);
   color: #051008;
   font-size: 13px;
   font-weight: 700;
 }
+.nav-brand .name-en { color: var(--text-faint); margin-left: 4px; font-weight: 500; font-size: 13px; }
 .nav-links {
-  display: flex; gap: 6px;
-  font-family: var(--mono);
-  font-size: 12.5px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  display: flex; gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
 }
 .nav-links a {
   padding: 8px 12px;
@@ -328,100 +192,55 @@ section {
 }
 .nav-links a:hover { color: var(--text); background: var(--border); }
 .nav-actions { display: flex; gap: 8px; align-items: center; }
+@media (max-width: 860px) { .nav-links { display: none; } }
 
-@media (max-width: 860px) {
-  .nav-links { display: none; }
-}
-
-/* ---------- buttons ---------- */
+/* ---------- BUTTONS ---------- */
 .btn {
-  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
+  gap: 8px;
+  padding: 11px 18px;
   border-radius: 999px;
-  font-family: var(--mono);
-  font-size: 13px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 14px;
   font-weight: 500;
+  letter-spacing: -0.01em;
   border: 1px solid var(--border);
   transition: border-color .2s, background .2s, color .2s, transform .2s;
-  will-change: transform;
+  cursor: pointer;
+  white-space: nowrap;
 }
 .btn:hover { border-color: var(--border-hi); }
 .btn-primary {
   background: var(--accent);
   color: #051008;
   border-color: transparent;
-  box-shadow: 0 10px 40px -12px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,.3);
+  font-weight: 600;
+  box-shadow: 0 10px 30px -12px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,.25);
 }
 .btn-primary:hover { background: color-mix(in srgb, var(--accent) 90%, white); }
-.btn-ghost {
-  background: transparent;
-  color: var(--text);
-}
+.btn-ghost { background: transparent; color: var(--text); }
 .btn-ghost:hover { background: var(--surface); }
-.btn-dark {
-  background: var(--surface);
-  color: var(--text);
-}
+.btn-dark { background: var(--surface); color: var(--text); }
 .btn-dark:hover { background: var(--surface-hi); }
-.btn .arrow {
-  display: inline-block;
-  transition: transform .25s cubic-bezier(.2,.8,.2,1);
-}
+.btn .arrow { transition: transform .25s cubic-bezier(.2,.8,.2,1); display: inline-block; }
 .btn:hover .arrow { transform: translateX(3px); }
 
-/* magnetic wrapper */
-.magnet {
-  display: inline-block;
-  transition: transform .4s cubic-bezier(.2,.8,.2,1);
-  will-change: transform;
-}
+.magnet { display: inline-block; transition: transform .35s cubic-bezier(.2,.8,.2,1); will-change: transform; }
 
-/* ---------- chip ---------- */
 .chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 11px;
+  padding: 5px 10px;
   border: 1px solid var(--border);
   border-radius: 999px;
   font-family: var(--mono);
-  font-size: 11.5px;
-  letter-spacing: 0.04em;
+  font-size: 11px;
+  letter-spacing: 0.02em;
   color: var(--text-dim);
-  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  background: color-mix(in srgb, var(--surface) 50%, transparent);
 }
-.chip .dot {
-  width: 5px; height: 5px; border-radius: 50%;
-  background: var(--accent);
-}
-
-/* ---------- card ---------- */
-.card {
-  position: relative;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  padding: 28px;
-  overflow: hidden;
-  transition: border-color .3s, transform .4s cubic-bezier(.2,.8,.2,1);
-}
-.card:hover { border-color: var(--border-hi); }
-.card-glow::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  background: radial-gradient(400px 200px at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 18%, transparent), transparent 60%);
-  opacity: 0;
-  transition: opacity .3s;
-  pointer-events: none;
-  border-radius: inherit;
-}
-.card-glow:hover::before { opacity: 1; }
+.chip .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
 
 /* ---------- theme-toggle ---------- */
 .theme-toggle {
@@ -430,121 +249,9 @@ section {
   border-radius: 999px;
   border: 1px solid var(--border);
   color: var(--text-dim);
+  transition: color .2s, border-color .2s;
 }
 .theme-toggle:hover { color: var(--text); border-color: var(--border-hi); }
-
-/* ---------- tweaks panel ---------- */
-.tweaks {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 280px;
-  background: var(--surface);
-  border: 1px solid var(--border-hi);
-  border-radius: 18px;
-  padding: 16px;
-  z-index: 200;
-  box-shadow: 0 30px 80px -20px rgba(0,0,0,.6);
-  transform: translateY(20px) scale(.95);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform .3s, opacity .3s;
-}
-.tweaks.open {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-  pointer-events: auto;
-}
-.tweaks-title {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.tweaks-row { margin-bottom: 14px; }
-.tweaks-label {
-  font-size: 12px;
-  color: var(--text-dim);
-  margin-bottom: 8px;
-  font-family: var(--mono);
-}
-.tweaks-swatches { display: flex; gap: 8px; }
-.swatch {
-  width: 26px; height: 26px;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  cursor: none;
-  transition: border-color .2s, transform .2s;
-}
-@media (pointer:coarse) { .swatch { cursor: pointer; } }
-.swatch:hover { transform: scale(1.08); }
-.swatch.active { border-color: var(--text); }
-
-.seg {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  background: var(--bg-1);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 3px;
-  font-family: var(--mono);
-  font-size: 11px;
-}
-.seg button {
-  padding: 6px 4px;
-  border-radius: 7px;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.seg button.active {
-  background: var(--surface-hi);
-  color: var(--text);
-}
-
-/* ---------- footer ---------- */
-.footer {
-  border-top: 1px solid var(--border);
-  padding: 40px 0 32px;
-  margin-top: 60px;
-}
-.footer-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-  align-items: flex-end;
-}
-.footer-big {
-  font-family: var(--display);
-  font-size: clamp(36px, 7vw, 72px);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  font-weight: 500;
-}
-
-/* ---------- tag/meta ---------- */
-.kv {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 13.5px;
-}
-.kv:last-child { border-bottom: 0; }
-.kv .k { color: var(--text-faint); font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; }
-.kv .v { color: var(--text); }
-
-</style>
-<style>
-/* ============================================
-   Sections — hero, strengths, metrics, projects, exp, skills, about, contact
-   ============================================ */
 
 /* ---------- HERO ---------- */
 .hero {
@@ -552,42 +259,25 @@ section {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 120px 0 80px;
+  padding: 140px 0 80px;
   overflow: hidden;
-}
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
 }
 .hero-glow {
   position: absolute;
   width: 900px; height: 900px;
   border-radius: 50%;
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%);
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%);
   filter: blur(60px);
-  top: -30%;
-  right: -15%;
+  top: -35%;
+  right: -20%;
   pointer-events: none;
   z-index: 0;
-  animation: drift 18s ease-in-out infinite alternate;
 }
-.hero-glow.v {
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent-violet) 20%, transparent), transparent 70%);
-  top: auto; right: auto;
-  bottom: -35%; left: -20%;
-  animation-duration: 24s;
-}
-@keyframes drift {
-  0%   { transform: translate(0,0) scale(1); }
-  100% { transform: translate(-40px, 30px) scale(1.1); }
-}
-
 .hero-inner {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1.15fr 1fr;
   gap: 60px;
   align-items: center;
 }
@@ -595,16 +285,40 @@ section {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
 }
 
-.hero-title {
-  font-family: var(--display);
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 50%, transparent);
+  font-size: 12.5px;
+  color: var(--text-dim);
   font-weight: 500;
-  font-size: clamp(48px, 8vw, 112px);
-  line-height: 0.95;
-  letter-spacing: -0.035em;
-  margin: 20px 0 28px;
-  text-wrap: balance;
 }
-.hero-title .line { display: block; overflow: hidden; }
+.hero-status .dot-live {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(1.3); }
+}
+
+.hero-title {
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: clamp(40px, 6.5vw, 80px);
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+  margin: 24px 0 28px;
+  text-wrap: balance;
+  color: var(--text);
+}
+.hero-title .line { display: block; overflow: hidden; padding: 0.08em 0; }
 .hero-title .line span {
   display: inline-block;
   transform: translateY(110%);
@@ -616,126 +330,91 @@ section {
 
 .hero-title .accent {
   color: var(--accent);
-  font-style: italic;
-  font-weight: 400;
-  font-family: "Instrument Serif", "Space Grotesk", serif;
+  font-weight: 700;
 }
-.hero-title .strike {
-  position: relative;
-  color: var(--text-faint);
-}
-.hero-title .strike::after {
-  content: "";
-  position: absolute;
-  left: -2%; right: -2%;
-  top: 52%;
-  height: 3px;
-  background: var(--accent);
-  transform-origin: left;
-  transform: scaleX(0);
-  animation: strike 1.2s .8s cubic-bezier(.2,.8,.2,1) forwards;
-}
-@keyframes strike { to { transform: scaleX(1); } }
 
 .hero-desc {
-  font-size: 18px;
+  font-size: 17px;
   color: var(--text-dim);
-  max-width: 500px;
-  margin-bottom: 36px;
+  max-width: 520px;
+  margin-bottom: 32px;
+  line-height: 1.7;
   text-wrap: pretty;
 }
+
 .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
 
 .hero-meta {
   display: flex;
-  gap: 24px;
-  margin-top: 60px;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+  margin-top: 48px;
   font-family: var(--mono);
   font-size: 12px;
   color: var(--text-faint);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.02em;
 }
 .hero-meta span { display: flex; align-items: center; gap: 8px; }
-.hero-meta .dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent-glow);
-}
+.hero-meta strong { color: var(--text); font-weight: 500; }
 
-/* ---- hero visual: interactive grid ---- */
+/* Hero visual — terminal-style card */
 .hero-visual {
   position: relative;
-  aspect-ratio: 1 / 1;
-  max-width: 520px;
   justify-self: end;
   width: 100%;
+  max-width: 480px;
 }
 @media (max-width: 960px) {
-  .hero-visual { justify-self: center; max-width: 420px; }
+  .hero-visual { justify-self: start; max-width: 100%; }
 }
-.hero-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.hero-card {
-  position: absolute;
+.term {
   background: var(--surface);
   border: 1px solid var(--border-hi);
-  border-radius: 14px;
-  padding: 12px 14px;
+  border-radius: 16px;
+  overflow: hidden;
   font-family: var(--mono);
-  font-size: 11.5px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 20px 50px -20px rgba(0,0,0,.5);
-  animation: float 6s ease-in-out infinite;
+  font-size: 12.5px;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,.5);
 }
-.hero-card.c1 { top: 8%; left: -6%; }
-.hero-card.c2 { bottom: 12%; right: -4%; animation-delay: -2s; }
-.hero-card.c3 { top: 45%; right: 8%; animation-delay: -4s; }
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-10px); }
-}
-.hero-card .lbl { color: var(--text-faint); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
-.hero-card .val { color: var(--accent); font-weight: 500; font-size: 13px; }
-.hero-card.muted .val { color: var(--text); }
-
-.scroll-cue {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-faint);
+.term-head {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--border);
 }
-.scroll-cue::after {
-  content: "";
-  width: 1px;
-  height: 36px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
-  animation: scrollDown 2s ease-in-out infinite;
-  transform-origin: top;
+.term-head .dots { display: flex; gap: 6px; }
+.term-head .dots span {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--border-hi);
 }
-@keyframes scrollDown {
-  0% { transform: scaleY(0); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  51% { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
+.term-head .title {
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+  margin-left: auto;
 }
+.term-body { padding: 18px 18px 20px; }
+.term-line { margin-bottom: 6px; }
+.term-line .p { color: var(--accent); }
+.term-line .c { color: var(--text-faint); }
+.term-line .k { color: var(--text); }
+.term-line .v { color: #8bd3ff; }
+.term-line .s { color: #ffb68a; }
+.caret {
+  display: inline-block;
+  width: 7px; height: 14px;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
 
 /* ---------- MARQUEE ---------- */
 .marquee {
-  padding: 40px 0;
+  padding: 28px 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   overflow: hidden;
@@ -744,79 +423,79 @@ section {
 }
 .marquee-track {
   display: inline-flex;
-  gap: 56px;
+  gap: 48px;
   align-items: center;
-  animation: scroll-x 40s linear infinite;
+  animation: scroll-x 35s linear infinite;
 }
-@keyframes scroll-x {
-  to { transform: translateX(-50%); }
-}
+@keyframes scroll-x { to { transform: translateX(-50%); } }
 .marquee-item {
   font-family: var(--display);
-  font-size: 36px;
-  font-weight: 400;
+  font-size: 28px;
+  font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--text-dim);
   display: inline-flex;
   align-items: center;
-  gap: 56px;
+  gap: 48px;
 }
 .marquee-item::after {
   content: "✦";
   color: var(--accent);
-  font-size: 20px;
-}
-.marquee-item em {
-  font-family: "Instrument Serif", serif;
-  font-style: italic;
-  color: var(--accent);
-  font-weight: 400;
+  font-size: 16px;
 }
 
 /* ---------- STRENGTHS ---------- */
 .strengths-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 56px;
+  gap: 14px;
+  margin-top: 48px;
 }
-@media (max-width: 900px) {
-  .strengths-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 900px) { .strengths-grid { grid-template-columns: 1fr; } }
+
 .strength {
-  padding: 32px 28px 36px;
-  min-height: 320px;
+  padding: 28px 26px 30px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: border-color .3s, background .3s;
+  position: relative;
+  overflow: hidden;
 }
+.strength:hover { border-color: var(--border-hi); background: var(--surface-hi); }
 .strength-num {
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--accent);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
 }
 .strength-icon {
-  width: 44px; height: 44px;
-  margin: 20px 0 24px;
+  width: 40px; height: 40px;
+  margin: 18px 0 22px;
   color: var(--accent);
 }
 .strength h3 {
-  font-family: var(--display);
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  margin: 0 0 12px;
+  font-family: var(--body);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+  line-height: 1.4;
   text-wrap: balance;
 }
 .strength p {
   color: var(--text-dim);
   font-size: 14.5px;
   margin: 0;
+  line-height: 1.7;
   text-wrap: pretty;
 }
 .strength-meta {
-  margin-top: 24px;
+  margin-top: 22px;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -827,48 +506,39 @@ section {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
-  margin-top: 48px;
+  margin-top: 44px;
   background: var(--border);
   border: 1px solid var(--border);
   border-radius: 20px;
   overflow: hidden;
 }
-@media (max-width: 900px) {
-  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-}
-.metric {
-  background: var(--bg-1);
-  padding: 36px 28px;
-  position: relative;
-}
+@media (max-width: 900px) { .metrics-grid { grid-template-columns: repeat(2, 1fr); } }
+.metric { background: var(--bg-1); padding: 32px 26px; }
 .metric-num {
   font-family: var(--display);
-  font-size: clamp(40px, 5vw, 64px);
-  font-weight: 500;
+  font-size: clamp(38px, 4.5vw, 58px);
+  font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1;
   color: var(--text);
 }
-.metric-num .unit {
-  font-size: 0.55em;
-  color: var(--accent);
-  margin-left: 4px;
-}
+.metric-num .unit { font-size: 0.55em; color: var(--accent); margin-left: 4px; }
 .metric-label {
   margin-top: 12px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
 }
 .metric-sub {
-  margin-top: 4px;
+  margin-top: 6px;
   font-size: 13px;
   color: var(--text-faint);
+  line-height: 1.55;
 }
 
 /* ---------- PROJECTS ---------- */
+a.project { display: grid; text-decoration: none; }
 .projects-head {
   display: flex;
   justify-content: space-between;
@@ -877,29 +547,24 @@ section {
   flex-wrap: wrap;
 }
 .projects-list {
-  margin-top: 56px;
+  margin-top: 48px;
   display: grid;
   gap: 14px;
 }
 .project {
   display: grid;
-  grid-template-columns: 140px 1.2fr 1fr auto;
-  gap: 28px;
+  grid-template-columns: 110px 1.1fr 1.3fr auto;
+  gap: 24px;
   align-items: center;
   padding: 22px 24px;
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 18px;
   background: var(--surface);
-  transition: background .3s, border-color .3s, transform .4s cubic-bezier(.2,.8,.2,1);
+  transition: background .3s, border-color .3s;
   position: relative;
   overflow: hidden;
-  cursor: none;
 }
-@media (pointer:coarse) { .project { cursor: pointer; } }
-.project:hover {
-  background: var(--surface-hi);
-  border-color: var(--border-hi);
-}
+.project:hover { background: var(--surface-hi); border-color: var(--border-hi); }
 .project::before {
   content: "";
   position: absolute;
@@ -916,27 +581,29 @@ section {
   font-family: var(--mono);
   font-size: 12px;
   color: var(--text-faint);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
 }
 .project-name {
-  font-family: var(--display);
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-family: var(--body);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
 }
 .project-role {
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--text-dim);
-  margin-top: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  margin-top: 6px;
+  letter-spacing: 0.02em;
 }
 .project-desc {
   color: var(--text-dim);
   font-size: 14px;
+  line-height: 1.6;
   text-wrap: pretty;
 }
+.project-desc strong { color: var(--accent); font-weight: 600; }
 .project-arrow {
   width: 40px; height: 40px;
   border-radius: 50%;
@@ -945,6 +612,7 @@ section {
   display: grid; place-items: center;
   transition: background .3s, color .3s, transform .3s;
   color: var(--text-dim);
+  flex-shrink: 0;
 }
 .project:hover .project-arrow {
   background: var(--accent);
@@ -952,103 +620,78 @@ section {
   transform: rotate(-45deg);
   border-color: transparent;
 }
-
-.project-preview {
-  position: fixed;
-  top: 0; left: 0;
-  width: 320px;
-  height: 220px;
-  border-radius: 16px;
-  border: 1px solid var(--border-hi);
-  background: var(--surface);
-  pointer-events: none;
-  z-index: 80;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.9);
-  transition: opacity .2s, transform .2s;
-  overflow: hidden;
-  box-shadow: 0 30px 80px -20px rgba(0,0,0,.6);
-}
-.project-preview.show {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-.project-preview-inner {
-  width: 100%; height: 100%;
-  display: grid; place-items: center;
-  position: relative;
-}
-
 @media (max-width: 900px) {
-  .project { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
+  .project { grid-template-columns: 1fr; gap: 10px; padding: 20px; }
   .project-year { order: -1; }
   .project-arrow { position: absolute; top: 20px; right: 20px; }
-  .project-preview { display: none; }
 }
 
 /* ---------- EXPERIENCE TIMELINE ---------- */
 .timeline {
-  margin-top: 56px;
+  margin-top: 48px;
   position: relative;
 }
 .timeline::before {
   content: "";
   position: absolute;
-  left: 12px;
+  left: 11px;
   top: 0; bottom: 0;
   width: 1px;
   background: linear-gradient(to bottom, transparent, var(--border) 10%, var(--border) 90%, transparent);
 }
 .tl-item {
   position: relative;
-  padding: 20px 0 28px 48px;
+  padding: 18px 0 24px 44px;
   display: grid;
   grid-template-columns: 160px 1fr;
-  gap: 32px;
+  gap: 28px;
   align-items: baseline;
 }
-@media (max-width: 720px) {
-  .tl-item { grid-template-columns: 1fr; gap: 6px; }
-}
+@media (max-width: 720px) { .tl-item { grid-template-columns: 1fr; gap: 4px; padding-left: 32px; } }
 .tl-item::before {
   content: "";
   position: absolute;
-  left: 6px;
-  top: 26px;
+  left: 5px;
+  top: 24px;
   width: 13px; height: 13px;
   border-radius: 50%;
   background: var(--bg);
   border: 2px solid var(--accent);
   box-shadow: 0 0 12px var(--accent-glow);
 }
+.tl-item.past::before {
+  border-color: var(--text-faint);
+  box-shadow: none;
+}
 .tl-date {
   font-family: var(--mono);
   font-size: 12px;
   color: var(--text-faint);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.tl-content h4 {
-  font-family: var(--display);
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  margin: 0 0 4px;
+  letter-spacing: 0.02em;
 }
 .tl-content .company {
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--accent);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+}
+.tl-content h4 {
+  font-family: var(--body);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+  line-height: 1.4;
 }
 .tl-content p {
-  margin: 10px 0 0;
+  margin: 8px 0 0;
   color: var(--text-dim);
   font-size: 14.5px;
+  line-height: 1.7;
   text-wrap: pretty;
 }
-.tl-content ul { margin: 10px 0 0; padding-left: 18px; color: var(--text-dim); font-size: 14px; }
+.tl-content ul { margin: 10px 0 0; padding-left: 18px; color: var(--text-dim); font-size: 14px; line-height: 1.7; }
 .tl-content ul li { margin-bottom: 4px; }
 
 /* ---------- SKILLS ---------- */
@@ -1056,10 +699,10 @@ section {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
-  margin-top: 56px;
+  margin-top: 44px;
 }
 .skill {
-  grid-column: span 3;
+  grid-column: span 4;
   padding: 24px;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1067,23 +710,22 @@ section {
   transition: border-color .3s, background .3s;
 }
 .skill:hover { border-color: var(--border-hi); background: var(--surface-hi); }
-.skill .icon {
-  width: 32px; height: 32px;
-  margin-bottom: 16px;
-  color: var(--accent);
-}
+.skill .skill-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.skill .icon { width: 28px; height: 28px; color: var(--accent); flex-shrink: 0; }
 .skill h5 {
-  font-family: var(--display);
+  font-family: var(--body);
   font-size: 15px;
-  font-weight: 500;
-  margin: 0 0 8px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
 }
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 10px;
+.skill .desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin: 0 0 12px;
+  line-height: 1.6;
 }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .skill-tags span {
   font-family: var(--mono);
   font-size: 11px;
@@ -1093,84 +735,91 @@ section {
   border-radius: 6px;
   border: 1px solid var(--border);
 }
-@media (max-width: 900px) {
-  .skill { grid-column: span 6; }
-}
-@media (max-width: 560px) {
-  .skill { grid-column: span 12; }
-}
+@media (max-width: 900px) { .skill { grid-column: span 6; } }
+@media (max-width: 560px) { .skill { grid-column: span 12; } }
 
 /* ---------- ABOUT ---------- */
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.85fr 1.15fr;
   gap: 56px;
   align-items: start;
-  margin-top: 56px;
+  margin-top: 48px;
 }
-@media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
+.about-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 28px;
 }
-.about-photo {
-  aspect-ratio: 4/5;
-  border-radius: 24px;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--accent) 20%, var(--bg-1)), var(--bg-1));
-  border: 1px solid var(--border-hi);
-  position: relative;
-  overflow: hidden;
+.about-card .avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent-2));
   display: grid;
   place-items: center;
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 700;
+  color: #051008;
+  margin-bottom: 18px;
 }
-.about-photo::before,
-.about-photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(-45deg, transparent 0 24px, rgba(255,255,255,.04) 24px 25px);
+.about-card .name {
+  font-family: var(--body);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
-.about-photo .ph {
-  position: relative;
+.about-card .title-sub {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+.about-card .kv {
+  display: flex;
+  justify-content: space-between;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13.5px;
+  gap: 16px;
+}
+.about-card .kv:last-child { border-bottom: 0; }
+.about-card .kv .k {
+  color: var(--text-faint);
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--text-faint);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  padding: 8px 14px;
-  border: 1px solid var(--border-hi);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--bg) 70%, transparent);
-  backdrop-filter: blur(4px);
+  flex-shrink: 0;
 }
+.about-card .kv .v { color: var(--text); text-align: right; }
+.about-card .kvs { margin-top: 20px; }
+
 .about-body p {
   font-size: 17px;
   color: var(--text);
-  line-height: 1.65;
-  margin: 0 0 20px;
+  line-height: 1.75;
+  margin: 0 0 18px;
   text-wrap: pretty;
 }
 .about-body p + p { color: var(--text-dim); font-size: 15.5px; }
-.about-kv { margin-top: 28px; }
+.about-body p strong { color: var(--accent); font-weight: 600; }
 
 /* ---------- CONTACT ---------- */
-.contact {
-  padding: 120px 0 80px;
-  position: relative;
-}
+.contact { padding: 120px 0 80px; position: relative; }
 .contact-inner {
   position: relative;
   background:
-    radial-gradient(600px 300px at 20% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%),
-    radial-gradient(600px 300px at 100% 100%, color-mix(in srgb, var(--accent-violet) 16%, transparent), transparent 70%),
+    radial-gradient(600px 300px at 20% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%),
     var(--surface);
   border: 1px solid var(--border-hi);
   border-radius: 32px;
-  padding: 72px 56px;
+  padding: 64px 52px;
   overflow: hidden;
 }
-@media (max-width: 720px) {
-  .contact-inner { padding: 48px 24px; border-radius: 24px; }
-}
+@media (max-width: 720px) { .contact-inner { padding: 44px 24px; border-radius: 24px; } }
 .contact-inner::before {
   content: "";
   position: absolute;
@@ -1184,44 +833,46 @@ section {
 }
 .contact h2 {
   position: relative;
-  font-family: var(--display);
-  font-size: clamp(44px, 8vw, 96px);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
-  margin: 20px 0 32px;
-  padding-bottom: 8px;
-  font-weight: 500;
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+  margin: 16px 0 22px;
+  padding-bottom: 4px;
   text-wrap: balance;
 }
-.contact h2 em {
-  font-family: "Instrument Serif", serif;
-  font-style: italic;
-  color: var(--accent);
-  font-weight: 400;
+.contact h2 .accent { color: var(--accent); }
+.contact-desc {
+  position: relative;
+  color: var(--text-dim);
+  font-size: 16px;
+  margin: 0 0 28px;
+  max-width: 540px;
+  line-height: 1.7;
+  text-wrap: pretty;
 }
 .contact-actions {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 16px;
+  gap: 10px;
 }
 .contact-grid {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 48px;
+  gap: 12px;
+  margin-top: 44px;
 }
-@media (max-width: 720px) {
-  .contact-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 720px) { .contact-grid { grid-template-columns: 1fr; } }
 .contact-card {
-  padding: 20px;
+  padding: 18px 20px;
   background: color-mix(in srgb, var(--bg-1) 70%, transparent);
   border: 1px solid var(--border);
   border-radius: 14px;
   transition: border-color .2s, background .2s;
+  display: block;
 }
 .contact-card:hover {
   border-color: var(--accent);
@@ -1231,15 +882,18 @@ section {
   font-family: var(--mono);
   font-size: 11px;
   color: var(--text-dim);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
 }
 .contact-card .val {
-  font-size: 16px;
+  font-size: 15px;
   margin-top: 6px;
   color: var(--text);
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 8px;
+  word-break: break-all;
 }
 .contact-card .val svg {
   flex-shrink: 0;
@@ -1248,31 +902,116 @@ section {
 }
 .contact-card:hover .val svg { transform: translate(2px, -2px); }
 
+/* ---------- FOOTER ---------- */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 36px 0 28px;
+  margin-top: 40px;
+}
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-end;
+}
+.footer-big {
+  font-family: var(--body);
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+.footer-meta {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--text-faint);
+  text-align: right;
+  line-height: 1.7;
+}
+
+/* ---------- TWEAKS PANEL ---------- */
+.tweaks {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 260px;
+  background: var(--surface);
+  border: 1px solid var(--border-hi);
+  border-radius: 16px;
+  padding: 16px;
+  z-index: 200;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,.6);
+  transform: translateY(20px) scale(.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .3s, opacity .3s;
+}
+.tweaks.open { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+.tweaks-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+.tweaks-row { margin-bottom: 14px; }
+.tweaks-row:last-child { margin-bottom: 0; }
+.tweaks-label {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  font-family: var(--mono);
+}
+.tweaks-swatches { display: flex; gap: 8px; }
+.swatch {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color .2s, transform .2s;
+}
+.swatch:hover { transform: scale(1.1); }
+.swatch.active { border-color: var(--text); }
+.seg {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 3px;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+.seg button { padding: 6px 4px; border-radius: 7px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; }
+.seg button.active { background: var(--surface-hi); color: var(--text); }
 </style>
 </head>
 <body>
-<div class="noise"></div>
 
 <!-- NAV -->
 <nav class="nav">
   <a href="#top" class="nav-brand">
     <span class="nav-brand-mark">Y</span>
-    <span>박윤경<span style="color:var(--text-faint); margin-left:6px; font-weight:400;">— Yunkyung Park</span></span>
+    <span>박윤경<span class="name-en">Yoonkyung Park</span></span>
   </a>
   <div class="nav-links">
-    <a href="#work">Work</a>
-    <a href="#strengths">Strengths</a>
-    <a href="#experience">Experience</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <a href="#work">프로젝트</a>
+    <a href="#strengths">강점</a>
+    <a href="#experience">경력</a>
+    <a href="#skills">스킬</a>
+    <a href="#contact">연락</a>
   </div>
   <div class="nav-actions">
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+    <button class="theme-toggle" id="theme-toggle" aria-label="테마 전환">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
-    <div class="magnet" data-magnet="0.3">
+    <div class="magnet" data-magnet="0.25">
       <a href="#contact" class="btn btn-primary">
-        Hire me
+        <span>채용 제안</span>
         <span class="arrow">→</span>
       </a>
     </div>
@@ -1281,40 +1020,43 @@ section {
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-grid grid-bg"></div>
+  <div class="grid-bg"></div>
   <div class="hero-glow"></div>
-  <div class="hero-glow v"></div>
 
   <div class="container hero-inner">
     <div>
-      <div class="eyebrow reveal in">Available · 2026 Q2</div>
+      <div class="hero-status reveal in">
+        <span class="dot-live"></span>
+        <span>㈜애드포터 재직 중 · 새로운 기회를 살펴보고 있습니다</span>
+      </div>
 
       <h1 class="hero-title">
-        <span class="line"><span>반복을 <em class="accent">시스템</em>으로</span></span>
-        <span class="line"><span>바꾸는</span></span>
+        <span class="line"><span>혼돈 속에서</span></span>
+        <span class="line"><span><em class="accent">구조</em>를 정의하는</span></span>
         <span class="line"><span>UI 개발자.</span></span>
       </h1>
 
       <p class="hero-desc reveal" data-delay="3">
-        9년 차 UI 개발자이자 PM. 문제를 구조화하고, 디자인 시스템으로 반복 업무를 제거합니다.
-        삼성·럭시·LUSH 등 엔터프라이즈·커머스 프로덕트를 0→1로 만들고 운영해 왔습니다.
+        9년 6개월+ 차 React 퍼블리셔 박윤경입니다.<br/>
+        기획·디자인·개발 사이에 생기는 공백을 구조로 해소하고,<br/>
+        복잡한 UI 라이브러리가 뒤섞인 환경에서 표준을 세워 팀을 움직이게 만듭니다.
       </p>
 
       <div class="hero-ctas reveal" data-delay="4">
-        <div class="magnet" data-magnet="0.3">
+        <div class="magnet" data-magnet="0.25">
           <a href="#contact" class="btn btn-primary">
-            <span>커피챗 예약</span>
-            <span class="arrow">→</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>이메일 보내기</span>
           </a>
         </div>
-        <div class="magnet" data-magnet="0.25">
-          <a href="#" class="btn btn-dark">
+        <div class="magnet" data-magnet="0.2">
+          <a href="uploads/Park_resume_20260704.pdf" target="_blank" class="btn btn-dark">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             <span>이력서 PDF</span>
           </a>
         </div>
-        <div class="magnet" data-magnet="0.25">
-          <a href="#" class="btn btn-ghost">
+        <div class="magnet" data-magnet="0.2">
+          <a href="https://app.notion.com/p/18a4b98909858022a29bdd921b36fa93" target="_blank" rel="noopener" class="btn btn-ghost">
             <span>노션 상세 이력서</span>
             <span class="arrow">↗</span>
           </a>
@@ -1322,49 +1064,57 @@ section {
       </div>
 
       <div class="hero-meta">
-        <span><span class="dot"></span>Seoul, Korea</span>
-        <span>UI · FE · PM</span>
-        <span>9+ Years</span>
+        <span><strong>Seoul</strong> · 성동구</span>
+        <span><strong>9년 6개월+</strong> 경력</span>
+        <span>React · Next.js · Vue3</span>
       </div>
     </div>
 
-    <!-- visual -->
     <div class="hero-visual">
-      <canvas id="hero-canvas" class="hero-canvas"></canvas>
-      <div class="hero-card c1">
-        <div class="lbl">current</div>
-        <div class="val">Design System v3.2</div>
-      </div>
-      <div class="hero-card c2 muted">
-        <div class="lbl">stack</div>
-        <div class="val">React · TS · Vue</div>
-      </div>
-      <div class="hero-card c3">
-        <div class="lbl">shipping</div>
-        <div class="val">■ ■ ■ ■ ■</div>
+      <div class="term">
+        <div class="term-head">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <span class="title">profile.ts</span>
+        </div>
+        <div class="term-body">
+          <div class="term-line"><span class="p">const</span> <span class="k">profile</span> <span class="c">=</span> {</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="k">name</span>: <span class="s">'박윤경'</span>,</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="k">role</span>: <span class="s">'React UI · PL/PO 지원'</span>,</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="k">years</span>: <span class="v">9.6</span>,</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="k">stack</span>: [<span class="s">'React 18/19'</span>, <span class="s">'Next 14'</span>, <span class="s">'Vue3'</span>],</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="k">ai</span>&nbsp;&nbsp;&nbsp;: {</div>
+          <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">tools</span>: [<span class="s">'Claude'</span>, <span class="s">'GPT-4o'</span>, <span class="s">'Cursor'</span>, <span class="s">'v0'</span>],</div>
+          <div class="term-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="k">level</span>: <span class="s">'UI 규칙·검증 체계'</span>,</div>
+          <div class="term-line">&nbsp;&nbsp;},</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="k">super</span>: <span class="s">'혼돈 → 구조 정의'</span>,</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="k">status</span>: <span class="s">'open-to-work'</span><span class="caret"></span></div>
+          <div class="term-line">};</div>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="scroll-cue">scroll</div>
 </section>
 
 <!-- MARQUEE -->
 <div class="marquee">
   <div class="marquee-track">
-    <span class="marquee-item">디자인 시스템 <em>architect</em></span>
-    <span class="marquee-item">프로세스 <em>design</em></span>
-    <span class="marquee-item">React · TypeScript</span>
-    <span class="marquee-item">오너십 × <em>실행력</em></span>
-    <span class="marquee-item">Figma → Code</span>
-    <span class="marquee-item">Enterprise <em>UI</em></span>
+    <span class="marquee-item">React 퍼블리셔</span>
+    <span class="marquee-item">디자인 시스템 설계</span>
+    <span class="marquee-item">TypeScript · Next.js</span>
+    <span class="marquee-item">구조를 만드는 사람</span>
+    <span class="marquee-item">Claude · Cursor · v0</span>
+    <span class="marquee-item">AI 워크플로 설계·전파</span>
+    <span class="marquee-item">Cross-functional 허브</span>
+    <span class="marquee-item">App Store 1위</span>
     <!-- duplicate for seamless loop -->
-    <span class="marquee-item">디자인 시스템 <em>architect</em></span>
-    <span class="marquee-item">프로세스 <em>design</em></span>
-    <span class="marquee-item">React · TypeScript</span>
-    <span class="marquee-item">오너십 × <em>실행력</em></span>
-    <span class="marquee-item">Figma → Code</span>
-    <span class="marquee-item">Enterprise <em>UI</em></span>
+    <span class="marquee-item">React 퍼블리셔</span>
+    <span class="marquee-item">디자인 시스템 설계</span>
+    <span class="marquee-item">TypeScript · Next.js</span>
+    <span class="marquee-item">구조를 만드는 사람</span>
+    <span class="marquee-item">Claude · Cursor · v0</span>
+    <span class="marquee-item">AI 워크플로 설계·전파</span>
+    <span class="marquee-item">Cross-functional 허브</span>
+    <span class="marquee-item">App Store 1위</span>
   </div>
 </div>
 
@@ -1373,29 +1123,38 @@ section {
   <div class="container">
     <div class="reveal">
       <div class="eyebrow">Strengths · 01</div>
-      <h2 class="section-title">9년간, 저는 이 세 가지로 증명해 왔습니다.</h2>
-      <p class="section-sub">좋은 UI는 그리기보다, 정의하고 반복을 없애는 일에서 시작됩니다.</p>
+      <h2 class="section-title section-title-kr">
+        9년, 이 세 가지로 증명해 왔습니다.
+      </h2>
+      <p class="section-sub">
+        UI는 결국 사람을 움직이게 만드는 일입니다.<br/>
+        화면을 그리는 것보다, 팀이 같은 방향을 보게 만드는 일에 더 많은 시간을 씁니다.
+      </p>
     </div>
 
     <div class="strengths-grid">
-      <article class="card card-glow strength reveal" data-delay="1">
+      <article class="strength reveal" data-delay="1">
         <div>
           <div class="strength-num">01 / 03</div>
           <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/>
+            <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/>
+            <path d="M10 6.5h4M17.5 10v4M14 17.5h-4M6.5 14v-4"/>
           </svg>
-          <h3>문제 정의 → 해결 구조화</h3>
-          <p>모호한 요구를 유저 플로우·엣지 케이스·성공 지표로 분해합니다. 구현보다 먼저, "무엇을 왜 푸는가"를 합의시키는 일을 잘합니다.</p>
+          <h3>혼돈 속에서<br/>구조를 정의합니다</h3>
+          <p>
+            스타트업 초기처럼 역할 경계가 모호한 환경을 잘 다룹니다.
+            모노레포 구조를 새로 잡고, 컴포넌트 네이밍 컨벤션을 문서화하고,
+            기획·디자인이 비어 있는 구간에서 개발 판단 기준을 먼저 정의합니다.
+          </p>
         </div>
         <div class="strength-meta">
-          <span class="chip"><span class="dot"></span>PRD</span>
-          <span class="chip">유저 플로우</span>
-          <span class="chip">KPI 정의</span>
+          <span class="chip"><span class="dot"></span>모노레포</span>
+          <span class="chip">컴포넌트 설계</span>
+          <span class="chip">컨벤션</span>
         </div>
       </article>
 
-      <article class="card card-glow strength reveal" data-delay="2">
+      <article class="strength reveal" data-delay="2">
         <div>
           <div class="strength-num">02 / 03</div>
           <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
@@ -1404,29 +1163,40 @@ section {
             <rect x="3" y="14" width="7" height="7" rx="1.5"/>
             <rect x="14" y="14" width="7" height="7" rx="1.5"/>
           </svg>
-          <h3>디자인 시스템으로 반복업무 제거</h3>
-          <p>토큰·컴포넌트·가이드·Figma→Code 파이프라인까지 만들어 팀의 생산성을 2~3배로 끌어올렸습니다. "두 번 같은 일을 하지 않게" 설계합니다.</p>
+          <h3>복잡한 UI 라이브러리를<br/>한 팀처럼 묶어냅니다</h3>
+          <p>
+            MUI · Ag-Grid · Shadcn UI · Tailwind가 한 프로젝트에 뒤섞이면 스타일 충돌이 일어납니다.
+            국내 대형 플랜트 EPC사 Admin 시스템에서 이 충돌을 구조적으로 해결하고
+            컴포넌트 재사용률 70% 이상을 달성했습니다.
+          </p>
         </div>
         <div class="strength-meta">
-          <span class="chip">Tokens</span>
-          <span class="chip">Storybook</span>
-          <span class="chip">A11y</span>
+          <span class="chip">MUI</span>
+          <span class="chip">Shadcn</span>
+          <span class="chip">Tailwind</span>
+          <span class="chip">SCSS</span>
         </div>
       </article>
 
-      <article class="card card-glow strength reveal" data-delay="3">
+      <article class="strength reveal" data-delay="3">
         <div>
           <div class="strength-num">03 / 03</div>
           <svg class="strength-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            <circle cx="12" cy="12" r="3"/>
           </svg>
-          <h3>빠른 실행력 & 오너십</h3>
-          <p>스펙이 비는 구간은 기다리지 않고 초안을 던지고, 필요하면 디자이너·기획자·백엔드 영역까지 들어가 합을 맞춥니다. 일을 '완성'시키는 사람입니다.</p>
+          <h3>AI 도구를<br/>조직의 워크플로로 만듭니다</h3>
+          <p>
+            Claude · Cursor · v0 같은 AI 도구를 개인 생산성 도구가 아니라
+            팀 전체의 실무 워크플로로 정착시킵니다.
+            AI 도구를 규칙 문서·화면설계·정적 검증 기준에 연결해 반복 가능한 UI 개발 워크플로로 운영합니다.
+          </p>
         </div>
         <div class="strength-meta">
-          <span class="chip">0→1</span>
-          <span class="chip">Cross-functional</span>
-          <span class="chip">오너십</span>
+          <span class="chip"><span class="dot"></span>Claude · Cursor</span>
+          <span class="chip">워크플로 설계</span>
+          <span class="chip">멘토링</span>
+          <span class="chip">문서화</span>
         </div>
       </article>
     </div>
@@ -1434,33 +1204,33 @@ section {
 </section>
 
 <!-- METRICS -->
-<section id="metrics" style="padding-top:40px;">
+<section id="metrics" style="padding-top:0;">
   <div class="container">
     <div class="reveal">
       <div class="eyebrow">Impact · 02</div>
-      <h2 class="section-title">숫자로 보는 9년.</h2>
+      <h2 class="section-title section-title-kr">숫자로 보는 9년.</h2>
     </div>
 
     <div class="metrics-grid reveal">
       <div class="metric">
-        <div class="metric-num"><span data-target="9">0</span><span class="unit">+</span></div>
-        <div class="metric-label">Years</div>
-        <div class="metric-sub">UI · FE · PM 경력</div>
+        <div class="metric-num"><span data-target="9.4" data-decimals="1">0.0</span><span class="unit">년</span></div>
+        <div class="metric-label">UI 개발 경력</div>
+        <div class="metric-sub">React 퍼블리셔 · PL</div>
       </div>
       <div class="metric">
-        <div class="metric-num"><span data-target="70">0</span><span class="unit">만+</span></div>
-        <div class="metric-label">Users Served</div>
-        <div class="metric-sub">엔터프라이즈 · 커머스 합산</div>
+        <div class="metric-num"><span data-target="1">0</span><span class="unit">위</span></div>
+        <div class="metric-label">iOS 앱스토어</div>
+        <div class="metric-sub">러쉬 Fresh Sale · 3일 유지</div>
       </div>
       <div class="metric">
-        <div class="metric-num"><span data-target="4">0</span></div>
-        <div class="metric-label">Design Systems</div>
-        <div class="metric-sub">0→1 설계 · 운영</div>
+        <div class="metric-num"><span data-target="70">0</span><span class="unit">%+</span></div>
+        <div class="metric-label">컴포넌트 재사용률</div>
+        <div class="metric-sub">S사 엔지니어링 MAP (NDA)</div>
       </div>
       <div class="metric">
-        <div class="metric-num"><span data-target="65">0</span><span class="unit">%</span></div>
-        <div class="metric-label">Dev Velocity</div>
-        <div class="metric-sub">컴포넌트화로 평균 단축</div>
+        <div class="metric-num"><span data-target="2">0</span><span class="unit">개월</span></div>
+        <div class="metric-label">신입 실무 투입</div>
+        <div class="metric-sub">멘토링 · 가이드 설계</div>
       </div>
     </div>
   </div>
@@ -1472,64 +1242,77 @@ section {
     <div class="projects-head reveal">
       <div>
         <div class="eyebrow">Selected Work · 03</div>
-        <h2 class="section-title">최근 4년, 4개의 케이스.</h2>
+        <h2 class="section-title section-title-kr">최근 진행한 프로젝트.</h2>
       </div>
-      <div class="section-sub" style="margin-top:24px;">호버 → 미리보기.<br/>클릭 → 상세 케이스 스터디.</div>
+      <p class="section-sub" style="margin-top:20px;">
+        2023년 이후 주요 4개 프로젝트.<br/>
+        각 프로젝트는 기술 스택보다 ‘어떤 문제를 어떻게 풀었는지’에 초점을 둡니다.
+      </p>
     </div>
 
     <div class="projects-list">
-      <article class="project reveal" data-color="#ff9aa8" data-label="LUSH Fresh Sale" data-delay="1">
-        <div class="project-year">2024</div>
+      <a class="project reveal" data-delay="1" href="case/adpoter.html" data-color="#1a3a2a" data-label="애드포터 모바일 UI">
+        <div class="project-year">2025.09 — 현재</div>
         <div>
-          <div class="project-name">LUSH Fresh Sale</div>
-          <div class="project-role">UI Dev · Design System · 2024</div>
+          <div class="project-name">애드포터 모바일<br/>핵심 플로우·UI 정합성</div>
+          <div class="project-role">㈜애드포터 · React UI 개발 / PL·PO 지원</div>
         </div>
-        <div class="project-desc">시즌 세일 LP + 통합 장바구니. 4주 만에 런칭, 전환율 +38%. 리필러블 상품 UX 새로 설계.</div>
+        <div class="project-desc">
+          지도·검색·매체 상세·등록 화면을 공통 필터·결과·바텀시트 UI와 <strong>Expo WebView 경로</strong>로 연결했습니다.
+          다크 지도·공통 상태 화면·하단 독바를 정비하고 <strong>type-check·Vite build·브라우저 렌더</strong>로 검증했습니다.
+        </div>
         <div class="project-arrow">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
-      </article>
+      </a>
 
-      <article class="project reveal" data-color="#7aa7ff" data-label="Samsung E&A MAP" data-delay="2">
-        <div class="project-year">2023</div>
+      <a class="project reveal" data-delay="2" href="case/s-ea-map.html" data-color="#0e2a3e" data-label="S사 엔지니어링 MAP">
+        <div class="project-year">2024.04 — 2025.08</div>
         <div>
-          <div class="project-name">Samsung E&amp;A MAP</div>
-          <div class="project-role">Lead FE · Enterprise · 2022–2023</div>
+          <div class="project-name">S사 엔지니어링 MAP<br/><span style="font-size:13px;color:var(--text-faint);font-weight:400;">NDA · 비공개</span></div>
+          <div class="project-role">넥스트리㈜ · 수석연구원 · SI</div>
         </div>
-        <div class="project-desc">글로벌 플랜트 인력 배치 관리. 간트·리소스 뷰 설계, 12개국 4,000+ 프로젝트 동시 운영.</div>
+        <div class="project-desc">
+          다층 메뉴트리와 대용량 데이터 테이블을 구축했습니다.
+          MUI · Ag-Grid · Shadcn UI · Tailwind가 혼재된 환경에서 스타일 충돌을 구조적으로 해결해
+          <strong>컴포넌트 재사용률 70%</strong>를 달성했습니다.
+        </div>
         <div class="project-arrow">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
-      </article>
+      </a>
 
-      <article class="project reveal" data-color="#b08cff" data-label="Edulime LMS" data-delay="3">
-        <div class="project-year">2023</div>
+      <a class="project reveal" data-delay="3" href="case/edulime-lms.html" data-color="#1a2a3e" data-label="Edulime LMS · App Store">
+        <div class="project-year">2024.08 — 2025.01</div>
         <div>
-          <div class="project-name">Edulime LMS</div>
-          <div class="project-role">PM + UI Dev · EdTech · 2023</div>
+          <div class="project-name">Edulime LMS<br/>App Store 출시</div>
+          <div class="project-role">넥스트리㈜ · 다국적 협업</div>
         </div>
-        <div class="project-desc">B2B 학원 대시보드. 출결·과제·결제 통합. 운영 CS 문의 -62%, 강사 세팅 시간 1일 → 30분.</div>
+        <div class="project-desc">
+          디자인 없이 도메인 모델만으로 구조를 분석해 퍼블리싱했습니다.
+          모바일 앱은 기여도 80%로 기획까지 참여했고,
+          <strong>2025년 1월 App Store 공식 출시</strong>에 성공했습니다.
+        </div>
         <div class="project-arrow">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
-      </article>
+      </a>
 
-      <article class="project reveal" data-color="#66d49b" data-label="Ad Porter" data-delay="4">
-        <div class="project-year">2022</div>
+      <a class="project reveal" data-delay="4" href="case/lush-fresh-sale.html" data-color="#3a1a2e" data-label="LUSH · iOS 앱스토어 1위">
+        <div class="project-year">2023.03 — 2024.03</div>
         <div>
-          <div class="project-name">애드포터 (Ad Porter)</div>
-          <div class="project-role">UI Dev · MarTech · 2022</div>
+          <div class="project-name">LUSH Fresh Sale<br/>iOS 앱스토어 1위</div>
+          <div class="project-role">㈜러쉬코리아 · 대리 / 웹퍼블리셔</div>
         </div>
-        <div class="project-desc">광고 소재 자동화 SaaS. 크리에이터가 30분 걸리던 배너 작업을 3분으로 단축하는 템플릿 에디터 구축.</div>
+        <div class="project-desc">
+          React 18 · Next.js 13 기반으로 시즌 세일 페이지와 프론트엔드 기능을 개발했습니다.
+          런칭 후 <strong>iOS 쇼핑 앱 1위, 전체 무료 앱 1위를 3일간 유지</strong>했습니다.
+        </div>
         <div class="project-arrow">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
-      </article>
+      </a>
     </div>
-  </div>
-
-  <div id="project-preview" class="project-preview">
-    <div class="project-preview-inner"></div>
   </div>
 </section>
 
@@ -1538,54 +1321,85 @@ section {
   <div class="container">
     <div class="reveal">
       <div class="eyebrow">Experience · 04</div>
-      <h2 class="section-title">커리어의 결, 시간순으로.</h2>
+      <h2 class="section-title section-title-kr">커리어, 시간 순으로.</h2>
     </div>
 
     <div class="timeline">
       <div class="tl-item reveal">
-        <div class="tl-date">2024 — Present</div>
+        <div class="tl-date">2025.09 — 현재</div>
         <div class="tl-content">
-          <div class="company">LUSH Korea Digital</div>
-          <h4>Senior UI Developer / PM</h4>
+          <div class="company">㈜애드포터</div>
+          <h4>과장 · React UI 개발 / PL·PO 지원</h4>
           <ul>
-            <li>시즌 캠페인 LP·이커머스 UI 리드 (React · Next.js)</li>
-            <li>브랜드 디자인 시스템 v3 구축 — 컴포넌트 80+ · 가이드 문서화</li>
-            <li>A/B 테스트 파이프라인 설계로 의사결정 사이클 1개월 → 1주</li>
+            <li>모바일 지도·검색·매체 상세·등록 플로우와 <b>Expo WebView 경로 연결</b></li>
+            <li>공통 필터·결과·바텀시트·온보딩 및 상태 화면 UI 구현</li>
+            <li>다크 지도·찜 상태·글래스 하단 독바·마이·알림·결제·등록 완료 UI 정비</li>
+            <li>type-check · Vite build · 정적 검사 · headless Chrome 렌더 기반 검증</li>
           </ul>
         </div>
       </div>
 
       <div class="tl-item reveal">
-        <div class="tl-date">2022 — 2024</div>
+        <div class="tl-date">2024.04 — 2025.09</div>
         <div class="tl-content">
-          <div class="company">Samsung E&amp;A (구 삼성엔지니어링)</div>
-          <h4>Lead Frontend Developer</h4>
+          <div class="company">넥스트리㈜ · SW개발본부</div>
+          <h4>수석연구원 / React 웹퍼블리셔</h4>
           <ul>
-            <li>인력 배치 관리 시스템 MAP FE 리드, 12개국 4,000+ 프로젝트 운영</li>
-            <li>Gantt/Resource 뷰 컴포넌트 직접 설계 — 가상 스크롤·대량 데이터 최적화</li>
-            <li>디자인 시스템 토큰·다국어·접근성 표준 도입</li>
+            <li><b>S사 엔지니어링 MAP Admin</b> <span style="font-family:var(--mono);font-size:10.5px;color:var(--text-faint);">(NDA)</span> — 다층 메뉴트리 · 대용량 테이블 구조 설계, 컴포넌트 재사용률 70%+</li>
+            <li><b>HD현대해양 IoT</b> — Vue3 · Vuetify · Vue Flow Chart 기반 대시보드 · 플로우차트 구축</li>
+            <li><b>우즈베키스탄 의대 LMS</b> — 다국적 협업으로 웹·모바일 앱 출시 (App Store, 2025.01)</li>
+            <li>신입 UI 퍼블리셔 멘토링 — 2개월 내 실무 투입</li>
           </ul>
         </div>
       </div>
 
       <div class="tl-item reveal">
-        <div class="tl-date">2020 — 2022</div>
+        <div class="tl-date">2023.03 — 2024.03</div>
         <div class="tl-content">
-          <div class="company">Edulime · Ad Porter (EdTech / MarTech)</div>
-          <h4>UI Developer + PM</h4>
+          <div class="company">㈜러쉬코리아 · 개발본부</div>
+          <h4>대리 / 웹퍼블리셔</h4>
           <ul>
-            <li>B2B 대시보드 · 에디터형 SaaS 0→1 구현</li>
-            <li>기획·디자인·개발 겸직. 운영 CS 인사이트 기반 제품 개선 루프 설계</li>
+            <li><b>Fresh Sale</b> React · Next.js 퍼블리싱 — iOS 앱스토어 1위 3일 유지</li>
+            <li>자사몰 이벤트 페이지 월 8건 이상 · 체류시간 · 전환율 실질 개선</li>
+            <li>iPad 가로모드 디지털 데모 퍼블리싱 (기여도 100%)</li>
           </ul>
         </div>
       </div>
 
-      <div class="tl-item reveal">
-        <div class="tl-date">2016 — 2020</div>
+      <div class="tl-item reveal past">
+        <div class="tl-date">2020.06 — 2023.04</div>
         <div class="tl-content">
-          <div class="company">Agency · Studio</div>
-          <h4>Frontend Developer</h4>
-          <p>브랜드·이커머스·프로모션 사이트 50+. 퍼블리싱·인터랙션·애니메이션 중심. 디테일과 속도를 모두 훈련한 시기.</p>
+          <div class="company">㈜루비셀 · 온라인기획팀</div>
+          <h4>대리 / 웹퍼블리셔</h4>
+          <p>
+            자사 쇼핑몰 구축 · 유지보수와 도메인 · 호스팅 관리를 전담했습니다.
+            카페24 기반 자사몰 구축, 아프로ON 안드로이드 앱 퍼블리싱, 가비아 · 카페24 도메인 300개 관리 등
+            운영 전반을 혼자 감당한 시기입니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal past">
+        <div class="tl-date">2018.08 — 2020.02</div>
+        <div class="tl-content">
+          <div class="company">퓨처서비스 · 엘이노베이션 · 허브디앤씨</div>
+          <h4>주임 · 사원 / 퍼블리셔</h4>
+          <p>
+            에이전시에서 인터랙션 · 모션 중심 프로모션 사이트와 브랜드 웹사이트를 만들었습니다.
+            퍼블리싱의 기본 체력과 디테일, 속도를 훈련한 시기입니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal past">
+        <div class="tl-date">2015.03 — 2016.03</div>
+        <div class="tl-content">
+          <div class="company">엠크라스</div>
+          <h4>대리 / 앱 기획</h4>
+          <p>
+            퍼블리셔로 전향하기 전, 앱 기획과 제휴 담당으로 커리어를 시작했습니다.
+            이 시기의 ‘기획자 시선’이 지금도 협업의 기반이 되고 있습니다.
+          </p>
         </div>
       </div>
     </div>
@@ -1597,37 +1411,112 @@ section {
   <div class="container">
     <div class="reveal">
       <div class="eyebrow">Toolbox · 05</div>
-      <h2 class="section-title">쓰고 있는 도구들.</h2>
-      <p class="section-sub">도구는 자주 바뀌지만, '왜 쓰는지'는 바뀌지 않습니다.</p>
+      <h2 class="section-title section-title-kr">실제로 다뤄본 도구들.</h2>
+      <p class="section-sub">
+        이름만 들어본 것이 아니라, 실무에서 직접 쓰고 문제를 풀어본 기술만 적었습니다.
+      </p>
     </div>
 
     <div class="skills-grid">
       <div class="skill reveal" data-delay="1">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        <h5>Frontend</h5>
+        <div class="skill-head">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <h5>Frontend</h5>
+        </div>
+        <p class="desc">React 기반 대형 SI · SaaS에서 실무 적용한 스택.</p>
         <div class="skill-tags">
-          <span>React</span><span>TypeScript</span><span>Next.js</span><span>Vue</span><span>Zustand</span><span>Tanstack</span>
+          <span>React 18 / 19</span><span>Next.js 14</span><span>TypeScript</span><span>Vue 3</span><span>Vuetify</span>
         </div>
       </div>
+
       <div class="skill reveal" data-delay="2">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="12" r="2.5"/><circle cx="5" cy="12" r="2.5"/><circle cx="12" cy="17.5" r="2.5"/><circle cx="8.5" cy="6.5" r="2.5"/></svg>
-        <h5>Design System</h5>
+        <div class="skill-head">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <h5>UI 라이브러리</h5>
+        </div>
+        <p class="desc">복수의 UI 라이브러리를 혼합·커스터마이징.</p>
         <div class="skill-tags">
-          <span>Figma</span><span>Tokens Studio</span><span>Storybook</span><span>Tailwind</span><span>Radix</span>
+          <span>MUI</span><span>Shadcn UI</span><span>Ag-Grid</span><span>Kendo UI</span><span>Chart.js</span>
         </div>
       </div>
+
       <div class="skill reveal" data-delay="3">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v4H4zM4 12h10v4H4zM4 20h6"/></svg>
-        <h5>Product / PM</h5>
+        <div class="skill-head">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v4H4zM4 12h10v4H4zM4 20h6"/></svg>
+          <h5>마크업 · 스타일</h5>
+        </div>
+        <p class="desc">웹 표준 · 접근성 · 크로스브라우징의 기본기.</p>
         <div class="skill-tags">
-          <span>Notion</span><span>Linear</span><span>Amplitude</span><span>Mixpanel</span><span>PRD</span>
+          <span>HTML5</span><span>CSS3</span><span>SCSS 모듈화</span><span>Tailwind CSS</span><span>반응형 · ARIA</span>
         </div>
       </div>
-      <div class="skill reveal" data-delay="4">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-        <h5>Motion / Graphic</h5>
+
+      <div class="skill reveal" data-delay="1">
+        <div class="skill-head">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <h5>빌드 · 협업</h5>
+        </div>
+        <p class="desc">실제 형상관리 · 빌드에서 쓰는 도구.</p>
         <div class="skill-tags">
-          <span>Framer Motion</span><span>GSAP</span><span>Lottie</span><span>Rive</span>
+          <span>Vite</span><span>Git · GitLab · SVN</span><span>Node.js</span><span>모노레포</span>
+        </div>
+      </div>
+
+      <div class="skill reveal" data-delay="2">
+        <div class="skill-head">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+          <h5>디자인 협업</h5>
+        </div>
+        <p class="desc">디자이너와 구조적으로 맞물리기.</p>
+        <div class="skill-tags">
+          <span>Figma</span><span>Zeplin</span><span>Adobe XD</span><span>Photoshop · Illustrator</span>
+        </div>
+      </div>
+
+      <div class="skill reveal" data-delay="3">
+        <div class="skill-head">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <h5>기타 · CMS</h5>
+        </div>
+        <p class="desc">운영·유지보수 현장에서 직접 다룬 기술.</p>
+        <div class="skill-tags">
+          <span>PHP / 그누보드</span><span>카페24</span><span>jQuery</span>
+        </div>
+      </div>
+
+      <!-- AI & Agent — full-width card -->
+      <div class="skill skill-ai reveal" data-delay="1" style="grid-column:span 12;margin-top:8px;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <div class="skill-head">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/></svg>
+              <h5>AI · Agent 활용</h5>
+            </div>
+            <p class="desc" style="margin-bottom:14px;">
+              단순 활용이 아니라 <b style="color:var(--text);">팀의 실무 워크플로로 정착</b>시킵니다.
+              AI 도구를 규칙·검증·화면설계 문서와 연결해 반복 가능한 UI 개발 워크플로로 운영합니다.
+            </p>
+            <div class="skill-tags">
+              <span>Claude (Anthropic)</span><span>GPT-4o</span><span>Cursor</span><span>v0 by Vercel</span><span>Windsurf</span><span>Figma AI</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;flex:1;min-width:300px;">
+            <div style="padding:14px 16px;background:var(--bg-1);border:1px solid var(--border);border-radius:12px;">
+              <div style="font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.06em;margin-bottom:8px;">CASE 01</div>
+              <div style="font-size:13.5px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em;">스타일 충돌 진단</div>
+              <p style="font-size:12.5px;color:var(--text-dim);margin:0;line-height:1.6;">MUI·Tailwind·SCSS 혼재 환경에서 Claude로 충돌 원인을 구조 분석 → 가이드 문서 자동화</p>
+            </div>
+            <div style="padding:14px 16px;background:var(--bg-1);border:1px solid var(--border);border-radius:12px;">
+              <div style="font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.06em;margin-bottom:8px;">CASE 02</div>
+              <div style="font-size:13.5px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em;">신입 온보딩 설계</div>
+              <p style="font-size:12.5px;color:var(--text-dim);margin:0;line-height:1.6;">GPT + Cursor로 컴포넌트 가이드 초안 작성 → 신입 퍼블리셔 2개월 내 실무 투입</p>
+            </div>
+            <div style="padding:14px 16px;background:var(--bg-1);border:1px solid var(--border);border-radius:12px;">
+              <div style="font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.06em;margin-bottom:8px;">CASE 03</div>
+              <div style="font-size:13.5px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em;">디자인 없이 퍼블리싱</div>
+              <p style="font-size:12.5px;color:var(--text-dim);margin:0;line-height:1.6;">Edulime LMS — 도메인 모델만으로 Claude와 함께 화면 구조 추론 후 즉시 마크업</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1639,26 +1528,43 @@ section {
   <div class="container">
     <div class="reveal">
       <div class="eyebrow">About · 06</div>
-      <h2 class="section-title">박윤경, <em style="font-family:'Instrument Serif'; font-style:italic; color:var(--accent); font-weight:400;">연결</em>을 잘하는 개발자.</h2>
+      <h2 class="section-title section-title-kr">박윤경, 어떤 사람인가.</h2>
     </div>
 
     <div class="about-grid">
-      <div class="about-photo reveal">
-        <div class="ph">portrait · 4:5</div>
-      </div>
-      <div class="about-body reveal" data-delay="1">
-        <p>저는 코드와 사람 사이, 기획과 실행 사이, 디자인과 시스템 사이를 잇는 데서 가장 큰 가치를 만들어 왔습니다.</p>
-        <p>
-          9년간 스튜디오·에듀테크·마테크·엔터프라이즈·커머스까지 다양한 도메인에서 UI를 만들었고, 최근 4년은 디자인 시스템과 프로세스 설계에 집중했습니다.
-          팀이 매번 다시 고민하지 않도록 시스템을 남기고, 그 위에 새 제품을 빠르게 올리는 일을 좋아합니다.
-        </p>
+      <aside class="about-card reveal">
+        <div class="avatar">박</div>
+        <div class="name">박윤경</div>
+        <div class="title-sub">React UI Developer · UI Architect</div>
 
-        <div class="about-kv">
-          <div class="kv"><span class="k">Based</span><span class="v">Seoul, Korea</span></div>
-          <div class="kv"><span class="k">Focus</span><span class="v">UI Development · Design System · Product</span></div>
-          <div class="kv"><span class="k">Open to</span><span class="v">정규직 · 컨설팅 · 파트너십</span></div>
-          <div class="kv"><span class="k">Languages</span><span class="v">한국어 (Native) · English (Business)</span></div>
+        <div class="kvs">
+          <div class="kv"><span class="k">based</span><span class="v">서울 성동구</span></div>
+          <div class="kv"><span class="k">years</span><span class="v">9년 6개월+</span></div>
+          <div class="kv"><span class="k">role</span><span class="v">React UI · PL/PO 지원</span></div>
+          <div class="kv"><span class="k">open to</span><span class="v">정규직 · 리드 포지션</span></div>
+          <div class="kv"><span class="k">language</span><span class="v">한국어 (원어민)</span></div>
         </div>
+      </aside>
+
+      <div class="about-body reveal" data-delay="1">
+        <p>
+          저는 <strong>코드와 사람 사이에 구조를 만드는 일</strong>을 좋아합니다.
+        </p>
+        <p>
+          9년 넘게 UI를 만들어왔고, 최근 몇 년은 단순한 마크업을 넘어
+          기획 · 디자인 · 개발 사이에 생기는 공백을 구조로 메우는 일에 집중했습니다.
+          혼자 빨리 해치우기보다, 팀 전체가 같은 방향으로 움직이도록 가이드를 만들고 공유하는 쪽이 더 즐겁습니다.
+        </p>
+        <p>
+          러쉬 Fresh Sale에서 앱스토어 1위를 경험하면서 퍼블리싱의 품질이 비즈니스 성과에 직접 연결된다는 사실을 체감했고,
+          이후 넥스트리에서 S사 엔지니어링 · HD현대해양 · 우즈베키스탄 의대 LMS 같은 이종 도메인 · 이종 스택 프로젝트를 병행하며
+          어디에 떨어뜨려 놓아도 구조를 찾아내는 감각을 훈련했습니다.
+        </p>
+        <p>
+          지금은 애드포터에서 Web·Admin·Mobile UI를 구현하고 화면 정책과 검증 기준을 정리하며,
+          모바일 핵심 플로우와 하이브리드 WebView 정합성을 다듬고 있습니다.
+          다음 회사에서도 구조와 검증으로 UI 품질을 지속 가능하게 만드는 역할을 하고 싶습니다.
+        </p>
       </div>
     </div>
   </div>
@@ -1670,52 +1576,53 @@ section {
     <div class="contact-inner reveal">
       <div class="eyebrow">Contact · 07</div>
       <h2>
-        좋은 팀과, <em>좋은 시스템</em>을<br/>같이 만들고 싶어요.
+        좋은 팀과,<br/>
+        <span class="accent">좋은 구조</span>를 같이 만들고 싶습니다.
       </h2>
-      <p class="section-sub" style="position:relative;">
-        지금 이력서를 보고 계신 인사담당자 분, 아래에서 편하신 방법으로 연락 주세요. 보통 하루 안에 답장합니다.
+      <p class="contact-desc">
+        지금 이 화면을 보고 계신 채용 담당자님께.<br/>
+        아래 중 편하신 방법으로 연락 주시면, 빠르게 답장드리겠습니다.
       </p>
 
       <div class="contact-actions">
-        <div class="magnet" data-magnet="0.3">
-          <a href="mailto:yk.park@example.com" class="btn btn-primary">
+        <div class="magnet" data-magnet="0.25">
+          <a href="mailto:yoonkp0233@gmail.com" class="btn btn-primary">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             이메일 보내기
           </a>
         </div>
-        <div class="magnet" data-magnet="0.25">
-          <a href="#" class="btn btn-dark">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            커피챗 예약
+        <div class="magnet" data-magnet="0.2">
+          <a href="uploads/Park_resume_20260704.pdf" target="_blank" class="btn btn-dark">이력서 PDF 다운로드</a>
+        </div>
+        <div class="magnet" data-magnet="0.2">
+          <a href="https://app.notion.com/p/18a4b98909858022a29bdd921b36fa93" target="_blank" rel="noopener" class="btn btn-ghost">
+            노션 상세 이력서 <span class="arrow">↗</span>
           </a>
         </div>
-        <div class="magnet" data-magnet="0.25">
-          <a href="#" class="btn btn-dark">이력서 PDF</a>
-        </div>
-        <div class="magnet" data-magnet="0.25">
-          <a href="#" class="btn btn-ghost">노션 상세 이력서 ↗</a>
+        <div class="magnet" data-magnet="0.2">
+          <a href="mailto:yoonkp0233@gmail.com?subject=커피챗 제안" class="btn btn-ghost">커피챗 제안 <span class="arrow">↗</span></a>
         </div>
       </div>
 
       <div class="contact-grid">
-        <a href="mailto:yk.park@example.com" class="contact-card">
+        <a href="mailto:yoonkp0233@gmail.com" class="contact-card">
           <div class="lbl">Email</div>
           <div class="val">
-            <span>yk.park@example.com</span>
+            <span>yoonkp0233@gmail.com</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
           </div>
         </a>
-        <a href="#" class="contact-card">
-          <div class="lbl">LinkedIn</div>
+        <a href="tel:01044660233" class="contact-card">
+          <div class="lbl">Mobile</div>
           <div class="val">
-            <span>linkedin.com/in/yunkyung-park</span>
+            <span>010 · 4466 · 0233</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
           </div>
         </a>
-        <a href="#" class="contact-card">
+        <a href="https://github.com/yoonkp" target="_blank" rel="noopener" class="contact-card">
           <div class="lbl">GitHub</div>
           <div class="val">
-            <span>github.com/yunkyungp</span>
+            <span>github.com/yoonkp</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
           </div>
         </a>
@@ -1729,12 +1636,14 @@ section {
   <div class="container">
     <div class="footer-row">
       <div>
-        <div class="footer-big">Park<em style="font-family:'Instrument Serif'; font-style:italic; color:var(--accent); font-weight:400;">,</em> Yunkyung.</div>
-        <p style="margin-top:14px; color:var(--text-faint); font-family:var(--mono); font-size:12px; letter-spacing:0.04em;">© 2026 — crafted with 오너십 & caffeine</p>
+        <div class="footer-big">박윤경 · <span style="color:var(--accent);">Yoonkyung Park.</span></div>
+        <p style="margin-top:10px; color:var(--text-faint); font-family:var(--mono); font-size:11.5px; letter-spacing:0.02em;">
+          © 2026 · 포트폴리오 v3.0 · Crafted in Seoul
+        </p>
       </div>
-      <div style="font-family:var(--mono); font-size:12px; color:var(--text-faint); letter-spacing:0.04em; text-align:right;">
-        <div>v 3.0 · apr 2026</div>
-        <div style="margin-top:4px;">Seoul · KR</div>
+      <div class="footer-meta">
+        <div>Last update · 2026.04</div>
+        <div>Made with care, not AI slop.</div>
       </div>
     </div>
   </div>
@@ -1762,277 +1671,78 @@ section {
     <div class="seg">
       <button data-theme-opt="dark">Dark</button>
       <button data-theme-opt="light">Light</button>
-      <button data-theme-opt="dark" style="opacity:.4; pointer-events:none;">Auto</button>
-    </div>
-  </div>
-
-  <div class="tweaks-row" style="margin-bottom:0;">
-    <div class="tweaks-label">Hero Layout</div>
-    <div class="seg">
-      <button data-hero-opt="grid">Grid</button>
-      <button data-hero-opt="minimal">Minimal</button>
-      <button data-hero-opt="split">Split</button>
     </div>
   </div>
 </div>
 
 <script>
-/* ============================================
-   Custom cursor, magnetic buttons, reveal, hero canvas, tweaks
-   ============================================ */
-
 (function () {
-  /* ---------- custom cursor ---------- */
-  const dot = document.createElement("div");
-  const ring = document.createElement("div");
-  dot.className = "cursor-dot";
-  ring.className = "cursor-ring";
-  document.body.appendChild(dot);
-  document.body.appendChild(ring);
-
-  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-  let rx = mx, ry = my;
-
-  window.addEventListener("mousemove", (e) => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
-  });
-  window.addEventListener("mouseleave", () => {
-    dot.classList.add("hidden"); ring.classList.add("hidden");
-  });
-  window.addEventListener("mouseenter", () => {
-    dot.classList.remove("hidden"); ring.classList.remove("hidden");
-  });
-
-  const tickRing = () => {
-    rx += (mx - rx) * 0.18;
-    ry += (my - ry) * 0.18;
-    ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
-    requestAnimationFrame(tickRing);
-  };
-  requestAnimationFrame(tickRing);
-
-  document.querySelectorAll("a, button, .project, .swatch, input, .skill, .contact-card").forEach((el) => {
-    el.addEventListener("mouseenter", () => ring.classList.add("hover"));
-    el.addEventListener("mouseleave", () => ring.classList.remove("hover"));
-  });
-
-  /* ---------- magnetic buttons ---------- */
+  /* magnetic buttons */
   document.querySelectorAll(".magnet").forEach((el) => {
-    const strength = parseFloat(el.dataset.magnet || "0.35");
+    const strength = parseFloat(el.dataset.magnet || "0.25");
     el.addEventListener("mousemove", (e) => {
       const r = el.getBoundingClientRect();
       const cx = r.left + r.width / 2;
       const cy = r.top + r.height / 2;
-      const dx = (e.clientX - cx) * strength;
-      const dy = (e.clientY - cy) * strength;
-      el.style.transform = `translate(${dx}px, ${dy}px)`;
+      el.style.transform = `translate(${(e.clientX - cx) * strength}px, ${(e.clientY - cy) * strength}px)`;
     });
-    el.addEventListener("mouseleave", () => {
-      el.style.transform = "translate(0, 0)";
-    });
+    el.addEventListener("mouseleave", () => { el.style.transform = "translate(0,0)"; });
   });
 
-  /* ---------- reveal on scroll ---------- */
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting) {
-          en.target.classList.add("in");
-          io.unobserve(en.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-  );
+  /* reveal */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-  /* ---------- number counter ---------- */
-  const numIO = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting) {
-          const el = en.target;
-          const target = parseFloat(el.dataset.target || "0");
-          const decimals = parseInt(el.dataset.decimals || "0", 10);
-          const dur = 1400;
-          const t0 = performance.now();
-          const step = (now) => {
-            const t = Math.min(1, (now - t0) / dur);
-            const e = 1 - Math.pow(1 - t, 3);
-            const v = target * e;
-            el.textContent = v.toFixed(decimals);
-            if (t < 1) requestAnimationFrame(step);
-            else el.textContent = target.toFixed(decimals);
-          };
-          requestAnimationFrame(step);
-          numIO.unobserve(el);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
+  /* number counter */
+  const numIO = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) {
+        const el = en.target;
+        const target = parseFloat(el.dataset.target || "0");
+        const decimals = parseInt(el.dataset.decimals || "0", 10);
+        const dur = 1300;
+        const t0 = performance.now();
+        const step = (now) => {
+          const t = Math.min(1, (now - t0) / dur);
+          const e = 1 - Math.pow(1 - t, 3);
+          el.textContent = (target * e).toFixed(decimals);
+          if (t < 1) requestAnimationFrame(step);
+          else el.textContent = target.toFixed(decimals);
+        };
+        requestAnimationFrame(step);
+        numIO.unobserve(el);
+      }
+    });
+  }, { threshold: 0.4 });
   document.querySelectorAll("[data-target]").forEach((el) => numIO.observe(el));
 
-  /* ---------- card glow (mouse coords) ---------- */
-  document.querySelectorAll(".card-glow").forEach((el) => {
-    el.addEventListener("mousemove", (e) => {
-      const r = el.getBoundingClientRect();
-      el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-      el.style.setProperty("--my", `${e.clientY - r.top}px`);
+  /* smooth anchor scroll */
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const id = a.getAttribute("href").slice(1);
+      const el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
     });
   });
 
-  /* ---------- project preview ---------- */
-  const preview = document.getElementById("project-preview");
-  document.querySelectorAll(".project").forEach((p) => {
-    p.addEventListener("mouseenter", () => {
-      if (!preview) return;
-      const color = p.dataset.color || "#2a5e46";
-      const label = p.dataset.label || "";
-      preview.querySelector(".project-preview-inner").innerHTML =
-        `<div style="position:absolute;inset:0;background:linear-gradient(135deg, ${color}, ${color}99 50%, #0a0c0b);"></div>
-         <div style="position:relative;font-family:var(--display);color:#fff;font-size:22px;letter-spacing:-0.01em;text-shadow:0 4px 20px rgba(0,0,0,.6);">${label}</div>`;
-      preview.classList.add("show");
-    });
-    p.addEventListener("mousemove", (e) => {
-      if (!preview) return;
-      preview.style.left = e.clientX + "px";
-      preview.style.top = e.clientY - 30 + "px";
-    });
-    p.addEventListener("mouseleave", () => {
-      if (!preview) return;
-      preview.classList.remove("show");
-    });
-  });
-
-  /* ---------- hero interactive grid canvas ---------- */
-  const canvas = document.getElementById("hero-canvas");
-  if (canvas && canvas.getContext) {
-    const ctx = canvas.getContext("2d");
-    let w, h, dpr;
-    let pointer = { x: -9999, y: -9999, active: false };
-    const nodes = [];
-    const COLS = 14;
-    const ROWS = 14;
-
-    function setup() {
-      dpr = Math.min(2, window.devicePixelRatio || 1);
-      const rect = canvas.getBoundingClientRect();
-      w = rect.width; h = rect.height;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      nodes.length = 0;
-      const padX = w / (COLS + 1);
-      const padY = h / (ROWS + 1);
-      for (let i = 1; i <= COLS; i++) {
-        for (let j = 1; j <= ROWS; j++) {
-          nodes.push({
-            x: i * padX,
-            y: j * padY,
-            ox: i * padX,
-            oy: j * padY,
-            vx: 0, vy: 0,
-          });
-        }
-      }
-    }
-
-    function getAccent() {
-      const s = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim();
-      return s || "oklch(0.86 0.18 145)";
-    }
-
-    function tick() {
-      ctx.clearRect(0, 0, w, h);
-      const accent = getAccent();
-
-      // connections (subtle)
-      nodes.forEach((n) => {
-        const dx = pointer.x - n.x;
-        const dy = pointer.y - n.y;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        const pushR = 140;
-        if (pointer.active && d < pushR) {
-          const f = (1 - d / pushR) * 2.8;
-          const ang = Math.atan2(dy, dx);
-          n.vx -= Math.cos(ang) * f;
-          n.vy -= Math.sin(ang) * f;
-        }
-        // spring back
-        n.vx += (n.ox - n.x) * 0.06;
-        n.vy += (n.oy - n.y) * 0.06;
-        n.vx *= 0.82;
-        n.vy *= 0.82;
-        n.x += n.vx;
-        n.y += n.vy;
-      });
-
-      // draw dots
-      nodes.forEach((n) => {
-        const dx = pointer.x - n.x;
-        const dy = pointer.y - n.y;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        const prox = pointer.active ? Math.max(0, 1 - d / 200) : 0;
-        const size = 1 + prox * 3.2;
-        ctx.beginPath();
-        ctx.fillStyle = prox > 0.05 ? accent : "rgba(180,200,190,0.28)";
-        ctx.globalAlpha = 0.35 + prox * 0.65;
-        ctx.arc(n.x, n.y, size, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      // lines to pointer
-      if (pointer.active) {
-        nodes.forEach((n) => {
-          const dx = pointer.x - n.x;
-          const dy = pointer.y - n.y;
-          const d = Math.sqrt(dx * dx + dy * dy);
-          if (d < 120) {
-            ctx.globalAlpha = (1 - d / 120) * 0.5;
-            ctx.strokeStyle = accent;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(n.x, n.y);
-            ctx.lineTo(pointer.x, pointer.y);
-            ctx.stroke();
-          }
-        });
-      }
-      ctx.globalAlpha = 1;
-      requestAnimationFrame(tick);
-    }
-
-    canvas.addEventListener("mousemove", (e) => {
-      const r = canvas.getBoundingClientRect();
-      pointer.x = e.clientX - r.left;
-      pointer.y = e.clientY - r.top;
-      pointer.active = true;
-    });
-    canvas.addEventListener("mouseleave", () => { pointer.active = false; pointer.x = -9999; pointer.y = -9999; });
-    window.addEventListener("resize", setup);
-    setup();
-    tick();
-  }
-
-  /* ---------- tweaks panel ---------- */
+  /* tweaks */
   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
     "accent": "blue",
-    "theme": "dark",
-    "heroLayout": "grid"
+    "theme": "dark"
   }/*EDITMODE-END*/;
-
   const state = Object.assign({}, TWEAK_DEFAULTS, JSON.parse(localStorage.getItem("pf-tweaks") || "{}"));
-
   const ACCENTS = {
-    green:  { a: "oklch(0.86 0.18 145)", a2: "oklch(0.72 0.14 155)", glow: "oklch(0.86 0.18 145 / 0.35)", grid: "rgba(120, 240, 180, 0.06)" },
-    blue:   { a: "oklch(0.78 0.16 240)", a2: "oklch(0.68 0.14 240)", glow: "oklch(0.78 0.16 240 / 0.35)", grid: "rgba(140, 180, 240, 0.07)" },
-    violet: { a: "oklch(0.78 0.18 300)", a2: "oklch(0.68 0.16 300)", glow: "oklch(0.78 0.18 300 / 0.35)", grid: "rgba(190, 160, 240, 0.07)" },
-    orange: { a: "oklch(0.80 0.18 55)",  a2: "oklch(0.70 0.16 55)",  glow: "oklch(0.80 0.18 55 / 0.35)",  grid: "rgba(240, 180, 140, 0.07)" },
+    green:  { a: "oklch(0.86 0.18 145)", a2: "oklch(0.72 0.14 155)", glow: "oklch(0.86 0.18 145 / 0.3)", grid: "rgba(120,240,180,0.05)" },
+    blue:   { a: "oklch(0.78 0.16 240)", a2: "oklch(0.68 0.14 240)", glow: "oklch(0.78 0.16 240 / 0.3)", grid: "rgba(140,180,240,0.06)" },
+    violet: { a: "oklch(0.78 0.18 300)", a2: "oklch(0.68 0.16 300)", glow: "oklch(0.78 0.18 300 / 0.3)", grid: "rgba(190,160,240,0.06)" },
+    orange: { a: "oklch(0.80 0.18 55)",  a2: "oklch(0.70 0.16 55)",  glow: "oklch(0.80 0.18 55 / 0.3)",  grid: "rgba(240,180,140,0.06)" },
   };
-
   function applyTweaks() {
     const root = document.documentElement;
     root.setAttribute("data-theme", state.theme);
@@ -2041,48 +1751,22 @@ section {
     root.style.setProperty("--accent-2", c.a2);
     root.style.setProperty("--accent-glow", c.glow);
     root.style.setProperty("--grid", c.grid);
-    root.setAttribute("data-hero", state.heroLayout);
-
-    // refresh selected states in panel
-    document.querySelectorAll(".swatch").forEach((s) => {
-      s.classList.toggle("active", s.dataset.accent === state.accent);
-    });
-    document.querySelectorAll("[data-theme-opt]").forEach((b) => {
-      b.classList.toggle("active", b.dataset.themeOpt === state.theme);
-    });
-    document.querySelectorAll("[data-hero-opt]").forEach((b) => {
-      b.classList.toggle("active", b.dataset.heroOpt === state.heroLayout);
-    });
+    document.querySelectorAll(".swatch").forEach((s) => s.classList.toggle("active", s.dataset.accent === state.accent));
+    document.querySelectorAll("[data-theme-opt]").forEach((b) => b.classList.toggle("active", b.dataset.themeOpt === state.theme));
   }
-
   function persist(patch) {
     Object.assign(state, patch);
     localStorage.setItem("pf-tweaks", JSON.stringify(state));
     applyTweaks();
-    // notify host for EDITMODE persistence
     try { window.parent.postMessage({ type: "__edit_mode_set_keys", edits: patch }, "*"); } catch (e) {}
   }
-
-  // bind handlers
-  document.querySelectorAll(".swatch").forEach((s) => {
-    s.addEventListener("click", () => persist({ accent: s.dataset.accent }));
-  });
-  document.querySelectorAll("[data-theme-opt]").forEach((b) => {
-    b.addEventListener("click", () => persist({ theme: b.dataset.themeOpt }));
-  });
-  document.querySelectorAll("[data-hero-opt]").forEach((b) => {
-    b.addEventListener("click", () => persist({ heroLayout: b.dataset.heroOpt }));
-  });
-  const themeToggleBtn = document.getElementById("theme-toggle");
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener("click", () =>
-      persist({ theme: state.theme === "dark" ? "light" : "dark" })
-    );
-  }
-
+  document.querySelectorAll(".swatch").forEach((s) => s.addEventListener("click", () => persist({ accent: s.dataset.accent })));
+  document.querySelectorAll("[data-theme-opt]").forEach((b) => b.addEventListener("click", () => persist({ theme: b.dataset.themeOpt })));
+  const tt = document.getElementById("theme-toggle");
+  if (tt) tt.addEventListener("click", () => persist({ theme: state.theme === "dark" ? "light" : "dark" }));
   applyTweaks();
 
-  /* ---------- tweaks host protocol ---------- */
+  /* tweaks host protocol */
   const panel = document.getElementById("tweaks-panel");
   window.addEventListener("message", (e) => {
     const t = e.data && e.data.type;
@@ -2090,19 +1774,7 @@ section {
     if (t === "__deactivate_edit_mode") panel && panel.classList.remove("open");
   });
   try { window.parent.postMessage({ type: "__edit_mode_available" }, "*"); } catch (e) {}
-
-  /* ---------- smooth anchor scroll ---------- */
-  document.querySelectorAll('a[href^="#"]').forEach((a) => {
-    a.addEventListener("click", (e) => {
-      const id = a.getAttribute("href").slice(1);
-      const el = document.getElementById(id);
-      if (!el) return;
-      e.preventDefault();
-      el.scrollIntoView ? window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" }) : null;
-    });
-  });
 })();
-
 </script>
 </body>
 </html>
