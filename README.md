@@ -10,6 +10,7 @@ Static hiring portfolio for a React UI Developer · UI Architect.
 
 ## Current focus
 
+- Mobile web and Google Play launch completed; post-launch UI enhancement
 - Mobile map, search, media detail, and registration UI flows
 - Shared UI state, dark mode, status routes, and visual QA
 - Hybrid Expo WebView surfaces and interaction states

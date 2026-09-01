@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>애드포터 모바일 핵심 플로우·WebView UI — 박윤경 포트폴리오</title>
-<meta name="description" content="분산된 모바일 지도·검색·상세·등록 UI를 Expo WebView 경로로 연결하고 공통 상태와 검증 기준을 정리한 사례." />
+<meta name="description" content="모바일 지도·검색·상세·등록 UI를 Expo WebView 경로로 연결하고, 모바일 웹·Google Play 앱 출시 이후 UI 고도화를 이어가는 사례." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -68,6 +68,7 @@ img{max-width:100%;display:block}
 .case-breadcrumb a{color:var(--text-faint);transition:color .2s}
 .case-breadcrumb a:hover{color:var(--accent)}
 .case-title{font-family:var(--body);font-weight:700;font-size:clamp(36px,5.5vw,60px);line-height:1.15;letter-spacing:-.03em;margin:0 0 16px;color:var(--text)}
+@media(max-width:480px){.case-title{font-size:34px;letter-spacing:-.04em}}
 .case-desc{font-size:16px;color:var(--text-dim);line-height:1.7;margin-bottom:20px;max-width:540px}
 .case-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
 .case-tag{padding:5px 12px;border:1px solid var(--border);border-radius:999px;font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:.02em}
@@ -163,10 +164,11 @@ img{max-width:100%;display:block}
         <h1 class="case-title">애드포터 모바일<br/>핵심 플로우·WebView UI</h1>
         <p class="case-desc">
           분산돼 있던 지도·검색·매체 상세·등록 UI를 공통 모바일 흐름과 Expo WebView 경로로 연결했습니다.
-          공통 상태·다크 지도·하단 독바를 정비하고 정적 검사와 브라우저 렌더링으로 검증한 현재 진행형 프로젝트입니다.
+          공통 상태·다크 지도·하단 독바를 정비해 모바일 웹과 Google Play 앱 출시를 완료했고, 출시 이후 UI 고도화를 이어가고 있습니다.
         </p>
         <div class="case-tags">
-          <span class="case-tag accent">재직 중 · 진행 중</span>
+          <span class="case-tag accent">모바일 웹 · Google Play 출시 완료</span>
+          <span class="case-tag">재직 중 · 고도화 진행</span>
           <span class="case-tag">React UI · PL/PO 지원</span>
           <span class="case-tag">Hybrid WebView</span>
           <span class="case-tag">UI Validation</span>
@@ -195,7 +197,7 @@ img{max-width:100%;display:block}
             </div>
           </div>
           <div class="case-thumb-footer">
-            <span class="badge">재직 중 · 진행 중</span>
+            <span class="badge">모바일 웹 · Google Play 출시 완료</span>
             <span class="label">㈜애드포터</span>
           </div>
         </div>
@@ -215,6 +217,7 @@ img{max-width:100%;display:block}
             <div>
               <div class="case-sub-label">Verified Results</div>
               <ul class="case-ul">
+                <li><strong>모바일 웹 · Google Play 앱 출시 완료</strong></li>
                 <li>지도·검색·매체 상세·등록 <strong>모바일 핵심 플로우 연결</strong></li>
                 <li>공통 필터·결과·바텀시트·온보딩 UI 구현</li>
                 <li>공통 상태 화면·다크 지도·글래스 하단 독바 정비</li>
@@ -224,7 +227,7 @@ img{max-width:100%;display:block}
             <div>
               <div class="case-sub-label">Scope Boundary</div>
               <div class="case-body-text">
-                <p>이번 사례는 <strong>React UI·mock 상태·WebView 라우팅·시각 검증</strong> 범위입니다.</p>
+                <p>출시 완료는 제품 상태이며, 이번 사례에서 설명하는 본인 담당 범위는 <strong>React UI·mock 상태·WebView 라우팅·시각 검증</strong>입니다.</p>
                 <p>백엔드 API, RN native 동작과 실제 위치 기능은 완료 성과에 포함하지 않았습니다.</p>
               </div>
             </div>
@@ -275,8 +278,8 @@ img{max-width:100%;display:block}
       <aside class="case-right">
         <div class="sidebar-card">
           <div class="sidebar-card-title">핵심 정보</div>
-          <div class="sidebar-stat-big">현재</div>
-          <div class="sidebar-stat-label">재직 중 · 진행 중</div>
+          <div class="sidebar-stat-big">출시 완료</div>
+          <div class="sidebar-stat-label">모바일 웹 · Google Play 앱 · 고도화 진행</div>
           <div class="sidebar-kv"><span class="k">Role</span><span class="v">React UI · PL/PO 지원</span></div>
           <div class="sidebar-kv"><span class="k">기간</span><span class="v">2025.09 — 현재</span></div>
           <div class="sidebar-kv"><span class="k">Focus</span><span class="v">Mobile UI Flow</span></div>
@@ -325,7 +328,7 @@ img{max-width:100%;display:block}
       <div>
         <div class="bnav-label">Now</div>
         <div class="bnav-title">애드포터 — 현재 재직 중</div>
-        <div class="bnav-desc">모바일 UI 플로우와 화면 정책·검증 기준을 정리하고 있습니다.</div>
+        <div class="bnav-desc">모바일 웹과 Google Play 앱 출시 이후 UI 플로우와 화면 정책·검증 기준을 고도화하고 있습니다.</div>
         <a href="../index.html#experience" class="bnav-link">현재 역할 보기 →</a>
       </div>
       <div class="bnav-divider"></div>
